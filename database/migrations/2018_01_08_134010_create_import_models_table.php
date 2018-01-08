@@ -13,10 +13,12 @@ class CreateImportModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('import_models', function (Blueprint $table) {
+        /*Schema::create('import_models', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
+         * 
+         */
     }
 
     /**
