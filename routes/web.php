@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/import', [
+    'uses' => 'ImportController@index',
+    'as' => 'import.index'    
+]);
