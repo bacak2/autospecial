@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    Kontent
+        {{ $user }}
 @endsection
