@@ -19,7 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/import', [
+Route::get('/admin/import', [
     'uses' => 'ImportController@index',
     'as' => 'import.index'    
 ]);
+
+Route::get('/admin', function () {
+    return view('admin');
+});

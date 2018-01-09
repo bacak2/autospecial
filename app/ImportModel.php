@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Excel;
+use App\baza_dostepnosciMigrate;
 
 class ImportModel extends Model
 {
@@ -23,7 +24,14 @@ class ImportModel extends Model
         
         foreach ($importedArray as $row) {
             //echo $row["komisja"].'<br>';
-            var_dump($row);
+            //var_dump($row);
+            //baza_dostepnosciMigrate::create($row);
+            
+            $insertRow = new baza_dostepnosciMigrate();
+            $insertRow->komisja = $row["komisja"];
+            $insertRow->model = $row["model"];
+            
+            $insertRow->save();
             exit();
         }
         
