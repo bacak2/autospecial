@@ -37,11 +37,12 @@ class ImportModel extends Model
             $insertRow->cena_dla_klienta    = $row["cena_dla_klienta"];
             
             $insertRow->save();
-            exit();
             
-            //return view 
+            //dla testów
+            return true;
         }
         
         //zwróć true przy powodzeniu
+        return true;
     }
 }

@@ -32,3 +32,23 @@ Route::get('/admin/baza_dostepnosci', [
     'uses' => 'ImportController@show',
     'as' => 'import.show'    
 ]);
+
+Route::get('/admin/baza_modeli', [
+    'uses' => 'ImportController@showModels',
+    'as' => 'import.showModels'    
+]);
+
+Route::get('/admin/baza_modeli', [
+    'uses' => 'ImportController@showVarnishColors',
+    'as' => 'import.showModels'    
+]);
+
+Route::get('/admin/baza_modeli', [
+    'uses' => 'ImportController@showUpholsteringColors',
+    'as' => 'import.showModels'    
+]);
+
+Route::get('/admin/baza_modeli', [
+    'uses' => 'ImportController@showEquipmentOptions',
+    'as' => 'import.showModels'    
+]);
