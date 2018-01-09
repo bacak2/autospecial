@@ -13,11 +13,11 @@ class ImportController extends Controller
     }
     
     public function index() {
-        $user = User::all();
         
         $importModel = new ImportModel();
-        $importModel->importToDB();
+        $importModel->importToDB('baza_dostepnosci_wzor.xls');
         
+        $user = "test";
         return view('import.index', compact('user'));
     }
     
