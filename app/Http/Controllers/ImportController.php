@@ -16,7 +16,7 @@ class ImportController extends Controller
         $user = User::all();
         
         $importModel = new ImportModel();
-        $importModel->importToArray();
+        $importModel->importToDB();
         
         return view('import.index', compact('user'));
     }
