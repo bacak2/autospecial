@@ -21,18 +21,25 @@ class ImportModel extends Model
 
         
         //umieść w BD
-        
+        $insertRow = new BazaDostepnosci();
         foreach ($importedArray as $row) {
-            //echo $row["komisja"].'<br>';
-            //var_dump($row);
-            //baza_dostepnosciMigrate::create($row);
+            // w transakcji: 
+            // drop/truncate całą tabele
             
-            $insertRow = new baza_dostepnosciMigrate();
-            $insertRow->komisja = $row["komisja"];
-            $insertRow->model = $row["model"];
+            // insert new
+            $insertRow->komisja             = $row["komisja"];
+            $insertRow->model               = $row["model"];
+            $insertRow->rok_modelowy        = $row["rok_modelowy"];
+            $insertRow->kolor               = $row["kolor"];
+            $insertRow->tapicerka           = $row["tapicerka"];
+            $insertRow->opcje               = $row["opcje"];
+            $insertRow->opcje_importerskie  = $row["opcje_importerskie"];
+            $insertRow->cena_dla_klienta    = $row["cena_dla_klienta"];
             
             $insertRow->save();
             exit();
+            
+            //return view 
         }
         
         //zwróć true przy powodzeniu

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use App\ImportModel;
+use App\BazaDostepnosci;
 
 use Illuminate\Http\Request;
 
@@ -19,6 +21,13 @@ class ImportController extends Controller
         
         $user = "test";
         return view('import.index', compact('user'));
+    }
+    
+    public function show() {
+        
+        $rows = BazaDostepnosci::all();
+
+        return view('admin.bazaDostepnosci', compact('rows'));
     }
     
 }

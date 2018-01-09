@@ -27,3 +27,8 @@ Route::get('/admin/import', [
 Route::get('/admin', function () {
     return view('admin');
 });
+
+Route::get('/admin/baza_dostepnosci', [
+    'uses' => 'ImportController@show',
+    'as' => 'import.show'    
+]);
