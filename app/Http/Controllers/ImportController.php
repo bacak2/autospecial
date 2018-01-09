@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\ImportModel;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,11 @@ class ImportController extends Controller
     
     public function index() {
         $user = User::all();
-        //dd($user);
+        
+        $importModel = new ImportModel();
+        $importModel->importToArray();
+        
         return view('import.index', compact('user'));
     }
+    
 }
