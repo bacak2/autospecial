@@ -57,3 +57,12 @@ Route::get('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
     'as' => 'import.showEquipmentOptions'    
 ]);
+
+Route::get('/admin/edit', function () {
+    return view('helpers.edit');
+});
+
+Route::get('/admin/baza-kolorow-lakieru/edit{item}', [
+    'uses' => 'EditController@VarnishColors',
+    'as' => 'edit.VarnishColors'    
+]);
