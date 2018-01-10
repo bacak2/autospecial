@@ -43,6 +43,16 @@ class ImportController extends Controller
 
         return view('admin.baza-kolorow-lakieru', compact('rows'));
     }
+
+    public function importVarnishColors() {
+
+        $importModel = new ImportModel();
+        
+        $importModel->importVarnishColors('files/KODY LAKIERU.xlsx');
+        
+        return view('admin.baza-kolorow-lakieru', compact('rows'));
+    }    
+    
     
     public function showUpholsteringColors() {
         
