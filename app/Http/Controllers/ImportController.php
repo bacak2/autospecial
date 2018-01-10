@@ -31,7 +31,7 @@ class ImportController extends Controller
     
     public function showModels() {
         
-        $rows = BazaDostepnosci::all();
+        $rows = BazaDostepnosci::paginate(10);
 
         return view('admin.baza-modeli', compact('rows'));
     }

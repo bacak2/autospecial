@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Excel;
-use App\baza_dostepnosciMigrate;
+use App\BazaDostepnosci;
 
 class ImportModel extends Model
 {
