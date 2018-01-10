@@ -41,7 +41,7 @@ class ImportController extends Controller
     
     public function showVarnishColors() {
         
-        $rows = BazaKolorowLakieru::all();
+        $rows = BazaKolorowLakieru::paginate(10);
 
         return view('admin.baza-kolorow-lakieru', compact('rows'));
     }
@@ -52,7 +52,7 @@ class ImportController extends Controller
 
         $importModel->importVarnishColors('Baza_kolorow.xls');
 
-        $rows = BazaKolorowLakieru::all();
+        $rows = BazaKolorowLakieru::paginate(10);
 
         return view('admin.baza-kolorow-lakieru', compact('rows'));
     }    
