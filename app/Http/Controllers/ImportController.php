@@ -17,44 +17,44 @@ class ImportController extends Controller
     public function index() {
         
         $importModel = new ImportModel();
-        if($importModel->importToDB('baza_dostepnosci_wzor.xls')) return redirect('/admin/baza_dostepnosci');   
+        if($importModel->importToDB('baza_dostepnosci_wzor.xls')) return redirect('/admin/baza-dostepnosci');   
         //else return view('bladImportu');
-        
+ 
     }
     
     public function show() {
         
         $rows = BazaDostepnosci::all();
 
-        return view('admin.bazaDostepnosci', compact('rows'));
+        return view('admin.baza-dostepnosci', compact('rows'));
     }
     
     public function showModels() {
         
         $rows = BazaDostepnosci::all();
 
-        return view('admin.bazaModeli', compact('rows'));
+        return view('admin.baza-modeli', compact('rows'));
     }
     
     public function showVarnishColors() {
         
         $rows = BazaDostepnosci::all();
 
-        return view('admin.bazaKolorówLakieru', compact('rows'));
+        return view('admin.baza-kolorow-lakieru', compact('rows'));
     }
     
     public function showUpholsteringColors() {
         
         $rows = BazaDostepnosci::all();
 
-        return view('admin.bazaKolorówTapicerki', compact('rows'));
+        return view('admin.baza-kolorow-tapicerki', compact('rows'));
     }
 
     public function showEquipmentOptions() {
         
         $rows = BazaDostepnosci::all();
 
-        return view('admin.bazaOpcjiWyposazenia', compact('rows'));
+        return view('admin.baza-opcji-wyposazenia', compact('rows'));
     }    
     
     

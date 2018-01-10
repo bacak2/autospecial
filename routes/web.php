@@ -28,27 +28,27 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/admin/baza_dostepnosci', [
+Route::get('/admin/baza-dostepnosci', [
     'uses' => 'ImportController@show',
     'as' => 'import.show'    
 ]);
 
-Route::get('/admin/baza_modeli', [
+Route::get('/admin/baza-modeli', [
     'uses' => 'ImportController@showModels',
     'as' => 'import.showModels'    
 ]);
 
-Route::get('/admin/baza_modeli', [
+Route::get('/admin/baza-kolorow-lakieru', [
     'uses' => 'ImportController@showVarnishColors',
-    'as' => 'import.showModels'    
+    'as' => 'import.showVarnishColors'    
 ]);
 
-Route::get('/admin/baza_modeli', [
+Route::get('/admin/baza-kolorow-tapicerki', [
     'uses' => 'ImportController@showUpholsteringColors',
-    'as' => 'import.showModels'    
+    'as' => 'import.showUpholsteringColors'    
 ]);
 
-Route::get('/admin/baza_modeli', [
+Route::get('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
-    'as' => 'import.showModels'    
+    'as' => 'import.showEquipmentOptions'    
 ]);
