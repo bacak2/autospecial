@@ -43,6 +43,11 @@ Route::get('/admin/baza-kolorow-lakieru', [
     'as' => 'import.showVarnishColors'    
 ]);
 
+Route::get('/admin/import/baza-kolorow-lakieru', [
+    'uses' => 'ImportController@importVarnishColors',
+    'as' => 'import.importVarnishColors'    
+]);
+
 Route::get('/admin/baza-kolorow-tapicerki', [
     'uses' => 'ImportController@showUpholsteringColors',
     'as' => 'import.showUpholsteringColors'    

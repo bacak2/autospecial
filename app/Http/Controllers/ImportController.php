@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\ImportModel;
 use App\BazaDostepnosci;
+use App\BazaKolorowLakieru;
+
 
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class ImportController extends Controller
     
     public function show() {
         
-        $rows = BazaDostepnosci::leftJoin('users', 'baza_dostepnoscis.id', '=', 'users.id')
+        $rows = BazaDostepnosci::leftJoin('baza_kolorow_lakierus', 'baza_dostepnoscis.kolor', '=', 'baza_kolorow_lakierus.code')
                 ->paginate(10);
 
         return view('admin.baza-dostepnosci', compact('rows'));
@@ -39,7 +41,7 @@ class ImportController extends Controller
     
     public function showVarnishColors() {
         
-        $rows = BazaDostepnosci::all();
+        $rows = BazaKolorowLakieru::all();
 
         return view('admin.baza-kolorow-lakieru', compact('rows'));
     }
@@ -47,9 +49,11 @@ class ImportController extends Controller
     public function importVarnishColors() {
 
         $importModel = new ImportModel();
-        
-        $importModel->importVarnishColors('files/KODY LAKIERU.xlsx');
-        
+
+        $importModel->importVarnishColors('Baza_kolorow.xls');
+
+        $rows = BazaKolorowLakieru::all();
+
         return view('admin.baza-kolorow-lakieru', compact('rows'));
     }    
     
