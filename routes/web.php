@@ -62,7 +62,12 @@ Route::get('/admin/edit', function () {
     return view('helpers.edit');
 });
 
-Route::get('/admin/baza-kolorow-lakieru/edit{item}', [
+Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
     'uses' => 'EditController@VarnishColors',
     'as' => 'edit.VarnishColors'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/delete/{item}', [
+    'uses' => 'DeleteController@VarnishColors',
+    'as' => 'delete.VarnishColors'    
 ]);
