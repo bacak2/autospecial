@@ -67,7 +67,7 @@ Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
     'as' => 'edit.VarnishColors'    
 ]);
 
-Route::get('/admin/baza-kolorow-lakieru/delete/{item}', [
+Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
     'uses' => 'DeleteController@VarnishColors',
     'as' => 'delete.VarnishColors'    
 ]);
