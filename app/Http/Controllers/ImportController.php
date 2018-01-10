@@ -24,7 +24,8 @@ class ImportController extends Controller
     
     public function show() {
         
-        $rows = BazaDostepnosci::all();
+        $rows = BazaDostepnosci::leftJoin('users', 'baza_dostepnoscis.id', '=', 'users.id')
+                ->paginate(10);
 
         return view('admin.baza-dostepnosci', compact('rows'));
     }
