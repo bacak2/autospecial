@@ -97,7 +97,7 @@ Route::get('/admin/baza-kolorow-tapicerki', [
 ]);
 
 Route::get('/admin/baza-kolorow-tapicerki/import', [
-    'uses' => 'BazaKolorowTapicerkiController@importVarnishColors',
+    'uses' => 'BazaKolorowTapicerkiController@import',
     'as' => 'koloryTapicerki.import'    
 ]);
 

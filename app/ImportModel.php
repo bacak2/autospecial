@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Excel;
 use App\BazaDostepnosci;
+use App\BazaKolorowTapicerki;
 
 class ImportModel extends Model
 {
@@ -72,5 +73,32 @@ class ImportModel extends Model
         BazaKolorowLakieru::insert($dataSet);
         
     }
+    
+    /*
+     * importuje plik '*.xls' i wprowadza do bazy danych
+     * @parametr string - nazwa submitowanego pliku     
+     */
+    public function importUpholsteryColors($name) {
+        $importReader = Excel::load($name);
+        
+        //przy imporcie pliku bez nagłówków jako pola w tabeli
+        $importedArray = $importReader->noHeading()->toArray();
+        $importedArray = $importedArray[0];
+        //$importedArray = $importReader->toArray();
+
+        
+        //umieść w BD
+        $insertRow = new BazaKolorowTapicerki();
+     
+        foreach ($importedArray as $row) {
+            $dataSet[] = [
+                'code'      => $row[0],
+                'decoded'   => $row[1],
+            ];
+        }
+
+        BazaKolorowTapicerki::insert($dataSet);
+        
+    }    
     
 }
