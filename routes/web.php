@@ -38,6 +38,17 @@ Route::get('/admin/baza-modeli', [
     'as' => 'import.showModels'    
 ]);
 
+Route::get('/admin/baza-opcji-wyposazenia', [
+    'uses' => 'ImportController@showEquipmentOptions',
+    'as' => 'import.showEquipmentOptions'    
+]);
+
+Route::get('/admin/edit', function () {
+    return view('helpers.edit');
+});
+
+/////        Routing for baza-kolorow-lakieru         //////
+
 Route::get('/admin/baza-kolorow-lakieru', [
     'uses' => 'ImportController@showVarnishColors',
     'as' => 'import.showVarnishColors'    
@@ -48,19 +59,47 @@ Route::get('/admin/import/baza-kolorow-lakieru', [
     'as' => 'import.importVarnishColors'    
 ]);
 
+Route::get('/admin/baza-kolorow-lakieru/new', [
+    'uses' => 'NewController@VarnishColors',
+    'as' => 'new.VarnishColors'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/insert', [
+    'uses' => 'InsertController@VarnishColors',
+    'as' => 'insert.VarnishColors'    
+]);
+
+Route::PUT('/admin/baza-kolorow-lakieru/{item}', [
+    'uses' => 'EditController@VarnishColorsUpdate',
+    'as' => 'edit.VarnishColorsUpdate'    
+]);
+
+Route::PUT('/admin/baza-kolorow-lakieru/save/{item}', [
+    'uses' => 'SaveController@VarnishColors',
+    'as' => 'save.VarnishColors'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
+    'uses' => 'EditController@VarnishColors',
+    'as' => 'edit.VarnishColors'    
+]);
+
+Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
+    'uses' => 'DeleteController@VarnishColors',
+    'as' => 'delete.VarnishColors'    
+]);
+
+/////        Routing for baza-kolorow-tapicerki         //////
+
 Route::get('/admin/baza-kolorow-tapicerki', [
     'uses' => 'ImportController@showUpholsteringColors',
     'as' => 'import.showUpholsteringColors'    
 ]);
 
-Route::get('/admin/baza-opcji-wyposazenia', [
-    'uses' => 'ImportController@showEquipmentOptions',
-    'as' => 'import.showEquipmentOptions'    
+Route::get('/admin/import/baza-kolorow-lakieru', [
+    'uses' => 'ImportController@importVarnishColors',
+    'as' => 'import.importVarnishColors'    
 ]);
-
-Route::get('/admin/edit', function () {
-    return view('helpers.edit');
-});
 
 Route::get('/admin/baza-kolorow-lakieru/new', [
     'uses' => 'NewController@VarnishColors',
