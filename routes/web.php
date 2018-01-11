@@ -92,41 +92,41 @@ Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
 /////        Routing for baza-kolorow-tapicerki         //////
 
 Route::get('/admin/baza-kolorow-tapicerki', [
-    'uses' => 'ImportController@showUpholsteringColors',
+    'uses' => 'BazaKolorowTapicerkiController@show',
     'as' => 'import.showUpholsteringColors'    
 ]);
 
-Route::get('/admin/import/baza-kolorow-lakieru', [
-    'uses' => 'ImportController@importVarnishColors',
-    'as' => 'import.importVarnishColors'    
+Route::get('/admin/baza-kolorow-tapicerki/import', [
+    'uses' => 'BazaKolorowTapicerkiController@importVarnishColors',
+    'as' => 'koloryTapicerki.import'    
 ]);
 
-Route::get('/admin/baza-kolorow-lakieru/new', [
-    'uses' => 'NewController@VarnishColors',
-    'as' => 'new.VarnishColors'    
+Route::get('/admin/baza-kolorow-tapicerki/new', [
+    'uses' => 'BazaKolorowTapicerkiController@newItem',
+    'as' => 'koloryTapicerki.new'    
 ]);
 
-Route::get('/admin/baza-kolorow-lakieru/insert', [
-    'uses' => 'InsertController@VarnishColors',
-    'as' => 'insert.VarnishColors'    
+Route::get('/admin/baza-kolorow-tapicerki/insert', [
+    'uses' => 'BazaKolorowTapicerkiController@insert',
+    'as' => 'koloryTapicerki.insert'    
 ]);
 
-Route::PUT('/admin/baza-kolorow-lakieru/{item}', [
-    'uses' => 'EditController@VarnishColorsUpdate',
-    'as' => 'edit.VarnishColorsUpdate'    
+Route::PUT('/admin/baza-kolorow-tapicerki/{item}', [
+    'uses' => 'BazaKolorowTapicerkiController@update',
+    'as' => 'koloryTapicerki.update'    
 ]);
 
-Route::PUT('/admin/baza-kolorow-lakieru/save/{item}', [
-    'uses' => 'SaveController@VarnishColors',
-    'as' => 'save.VarnishColors'    
+Route::PUT('/admin/baza-kolorow-tapicerki/save/{item}', [
+    'uses' => 'BazaKolorowTapicerkiController@save',
+    'as' => 'koloryTapicerki.save'    
 ]);
 
-Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
-    'uses' => 'EditController@VarnishColors',
-    'as' => 'edit.VarnishColors'    
+Route::get('/admin/baza-kolorow-tapicerki/edit/{item}', [
+    'uses' => 'BazaKolorowTapicerkiController@edit',
+    'as' => 'koloryTapicerki.edit'    
 ]);
 
-Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
-    'uses' => 'DeleteController@VarnishColors',
-    'as' => 'delete.VarnishColors'    
+Route::delete('/admin/baza-kolorow-tapicerki/delete/{item}', [
+    'uses' => 'BazaKolorowTapicerkiController@delete',
+    'as' => 'koloryTapicerki.delete'    
 ]);
