@@ -2,12 +2,18 @@
 
 @section('content')
 
-{!! Form::model($item, ['method' => 'PUT', 'route' => ['save.VarnishColors', $item]]) !!}
+{!! Form::model($item, ['route' => ['edit.VarnishColorsUpdate', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
     {!! Form::label('code', 'Kod') !!}
     {!! Form::text('code', $item->code, ['class'=>'form-control']) !!}
- 
+
+    @if ($errors->any())
+        @foreach($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    @endif
+    
 </div>
 
 <div class="form-group">

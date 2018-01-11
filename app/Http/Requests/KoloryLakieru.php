@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class KoloryLakieru extends FormRequest
 {
+    
+    protected $fillable = ['code', 'decoded'];
+    
     /**
      * Determine if the user is authorized to make this request.
      *

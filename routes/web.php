@@ -72,6 +72,11 @@ Route::get('/admin/baza-kolorow-lakieru/insert', [
     'as' => 'insert.VarnishColors'    
 ]);
 
+Route::PUT('/admin/baza-kolorow-lakieru/{item}', [
+    'uses' => 'EditController@VarnishColorsUpdate',
+    'as' => 'edit.VarnishColorsUpdate'    
+]);
+
 Route::PUT('/admin/baza-kolorow-lakieru/save/{item}', [
     'uses' => 'SaveController@VarnishColors',
     'as' => 'save.VarnishColors'    
