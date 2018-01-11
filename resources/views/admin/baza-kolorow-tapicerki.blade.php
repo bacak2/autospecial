@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card-block">
-    <h4 class="card-title">Lista kolorów lakieru</h4>
+    <h4 class="card-title">Lista kolorów tapicerki</h4>
   
     <a href="{{ route('koloryTapicerki.import') }}" class="btn btn-primary">Importuj</a>
     <a href="{{ route('koloryTapicerki.new') }}" class="btn btn-success">Dodaj nowy</a>

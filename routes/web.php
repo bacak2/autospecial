@@ -130,3 +130,45 @@ Route::delete('/admin/baza-kolorow-tapicerki/delete/{item}', [
     'uses' => 'BazaKolorowTapicerkiController@delete',
     'as' => 'koloryTapicerki.delete'    
 ]);
+
+/////        Routing for baza-opcji-wyposazenia         //////
+
+Route::get('/admin/baza-opcji-wyposazenia', [
+    'uses' => 'BazaOpcjiWyposazeniaController@show',
+    'as' => 'import.showEquipmentOptions'    
+]);
+
+Route::get('/admin/baza-opcji-wyposazenia/import', [
+    'uses' => 'BazaOpcjiWyposazeniaController@import',
+    'as' => 'opcjeWyposazenia.import'    
+]);
+
+Route::get('/admin/baza-opcji-wyposazenia/new', [
+    'uses' => 'BazaOpcjiWyposazeniaController@newItem',
+    'as' => 'opcjeWyposazenia.new'    
+]);
+
+Route::get('/admin/baza-opcji-wyposazenia/insert', [
+    'uses' => 'BazaOpcjiWyposazeniaController@insert',
+    'as' => 'opcjeWyposazenia.insert'    
+]);
+
+Route::PUT('/admin/baza-opcji-wyposazenia/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@update',
+    'as' => 'opcjeWyposazenia.update'    
+]);
+
+Route::PUT('/admin/baza-opcji-wyposazenia/save/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@save',
+    'as' => 'opcjeWyposazenia.save'    
+]);
+
+Route::get('/admin/baza-opcji-wyposazenia/edit/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@edit',
+    'as' => 'opcjeWyposazenia.edit'    
+]);
+
+Route::delete('/admin/baza-opcji-wyposazenia/delete/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@delete',
+    'as' => 'opcjeWyposazenia.delete'    
+]);
