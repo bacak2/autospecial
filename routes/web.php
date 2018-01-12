@@ -28,10 +28,12 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/admin/baza-dostepnosci', [
+/*Route::get('/admin/baza-dostepnosci', [
     'uses' => 'ImportController@show',
     'as' => 'import.show'    
 ]);
+ * 
+ */
 
 Route::get('/admin/baza-modeli', [
     'uses' => 'ImportController@showModels',
@@ -46,6 +48,48 @@ Route::get('/admin/baza-opcji-wyposazenia', [
 Route::get('/admin/edit', function () {
     return view('helpers.edit');
 });
+
+/////        Routing for baza-dostepnych-modeli        //////
+
+Route::get('/admin/baza-dostepnych-modeli', [
+    'uses' => 'BazaDostepnychModeliController@show',
+    'as' => 'import.show'    
+]);
+
+Route::get('/admin/baza-dostepnych-modeli/import', [
+    'uses' => 'BazaDostepnychModeliController@import',
+    'as' => 'dostepneModele.import'    
+]);
+
+Route::get('/admin/baza-dostepnych-modeli/new', [
+    'uses' => 'BazaDostepnychModeliController@newItem',
+    'as' => 'dostepneModele.new'    
+]);
+
+Route::get('/admin/baza-dostepnych-modeli/insert', [
+    'uses' => 'BazaDostepnychModeliController@insert',
+    'as' => 'dostepneModele.insert'    
+]);
+
+Route::PUT('/admin/baza-dostepnych-modeli/{item}', [
+    'uses' => 'BazaDostepnychModeliController@update',
+    'as' => 'dostepneModele.update'    
+]);
+
+Route::PUT('/admin/baza-dostepnych-modeli/save/{item}', [
+    'uses' => 'BazaDostepnychModeliController@save',
+    'as' => 'dostepneModele.save'    
+]);
+
+Route::get('/admin/baza-dostepnych-modeli/edit/{item}', [
+    'uses' => 'BazaDostepnychModeliController@edit',
+    'as' => 'dostepneModele.edit'    
+]);
+
+Route::delete('/admin/baza-dostepnych-modeli/delete/{item}', [
+    'uses' => 'BazaDostepnychModeliController@delete',
+    'as' => 'dostepneModele.delete'    
+]);
 
 /////        Routing for baza-kolorow-lakieru         //////
 

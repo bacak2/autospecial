@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Excel;
 use App\BazaDostepnosci;
+use App\BazaDostepnychModeli;
 use App\BazaKolorowTapicerki;
 use App\BazaOpcjiWyposazenia;
 
@@ -127,6 +128,33 @@ class ImportModel extends Model
 
         BazaOpcjiWyposazenia::insert($dataSet);
         
-    }     
+    }    
+    
+    /*
+     * importuje plik '*.xls' i wprowadza do bazy danych
+     * @parametr string - nazwa submitowanego pliku     
+     */
+    public function importAvailableItems($name) {
+        $importReader = Excel::load($name);
+        
+        //przy imporcie pliku bez nagłówków jako pola w tabeli
+        $importedArray = $importReader->noHeading()->toArray();
+        $importedArray = $importedArray[0];
+        //$importedArray = $importReader->toArray();
+
+        
+        //umieść w BD
+        $insertRow = new BazaDostepnychModeli();
+     
+        foreach ($importedArray as $row) {
+            $dataSet[] = [
+                'code'      => $row[0],
+                'decoded'   => $row[1],
+            ];
+        }
+
+        BazaDostepnychModeli::insert($dataSet);
+        
+    }    
     
 }
