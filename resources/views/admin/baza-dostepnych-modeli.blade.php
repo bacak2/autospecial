@@ -11,8 +11,11 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th>Kod</th>
-            <th>Kolor</th>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Kolor lakieru</th>
+            <th>Kolor tapicerki</th>
+            <th>Opcje wyposażenia</th>
             <th>Edytuj</th>
             <th>Usuń</th>
         </tr>
@@ -21,9 +24,11 @@
         
     @foreach ($rows as $row)
     <tr>
-{{ dd($row) }}
-        <td>{{ $row->code }}</td>
-        <td>{{ $row->decoded }} </td>
+        <td>{{ $row->id }}</td>
+        <td>{{ $row->model_decoded }} </td>
+        <td>{{ $row->kolor_lakieru_decoded }} </td>
+        <td>{{ $row->kolor_tapicerki_decoded }} </td>
+        <td>{{ $row->opcja_wyposazenia_decoded }} </td>
         <td><a href="{{ route('dostepneModele.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['dostepneModele.delete', $row], 'method' => 'DELETE']) !!}
