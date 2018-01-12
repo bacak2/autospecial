@@ -32,13 +32,15 @@ Route::get('/admin', function () {
     'uses' => 'ImportController@show',
     'as' => 'import.show'    
 ]);
- * 
- */
+
 
 Route::get('/admin/baza-modeli', [
     'uses' => 'ImportController@showModels',
     'as' => 'import.showModels'    
 ]);
+ * 
+ */
+
 
 Route::get('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
@@ -89,6 +91,48 @@ Route::get('/admin/baza-dostepnych-modeli/edit/{item}', [
 Route::delete('/admin/baza-dostepnych-modeli/delete/{item}', [
     'uses' => 'BazaDostepnychModeliController@delete',
     'as' => 'dostepneModele.delete'    
+]);
+
+/////        Routing for baza-modeli        //////
+
+Route::get('/admin/baza-modeli', [
+    'uses' => 'BazaModeliController@show',
+    'as' => 'import.showModels'    
+]);
+
+Route::get('/admin/baza-modeli/import', [
+    'uses' => 'BazaModeliController@import',
+    'as' => 'modele.import'    
+]);
+
+Route::get('/admin/baza-modeli/new', [
+    'uses' => 'BazaModeliController@newItem',
+    'as' => 'modele.new'    
+]);
+
+Route::get('/admin/baza-modeli/insert', [
+    'uses' => 'BazaModeliController@insert',
+    'as' => 'modele.insert'    
+]);
+
+Route::PUT('/admin/baza-modeli/{item}', [
+    'uses' => 'BazaModeliController@update',
+    'as' => 'modele.update'    
+]);
+
+Route::PUT('/admin/baza-modeli/save/{item}', [
+    'uses' => 'BazaModeliController@save',
+    'as' => 'modele.save'    
+]);
+
+Route::get('/admin/baza-modeli/edit/{item}', [
+    'uses' => 'BazaModeliController@edit',
+    'as' => 'modele.edit'    
+]);
+
+Route::delete('/admin/baza-modeli/delete/{item}', [
+    'uses' => 'BazaModeliController@delete',
+    'as' => 'modele.delete'    
 ]);
 
 /////        Routing for baza-kolorow-lakieru         //////
