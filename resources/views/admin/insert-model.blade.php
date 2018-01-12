@@ -5,8 +5,8 @@
 {!! Form::open(['method' => 'GET', 'route' => ['modele.insert']]) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', null, ['class'=>'form-control']) !!}
+    {!! Form::label('model_code', 'Kod') !!}
+    {!! Form::text('model_code', null, ['class'=>'form-control']) !!}
     
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', null, ['class'=>'form-control']) !!}
+    {!! Form::label('model_decoded', 'Nazwa') !!}
+    {!! Form::textarea('model_decoded', null, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

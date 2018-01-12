@@ -5,8 +5,8 @@
 {!! Form::model($item, ['route' => ['modele.update', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', $item->code, ['class'=>'form-control']) !!}
+    {!! Form::label('model_code', 'Kod') !!}
+    {!! Form::text('model_code', $item->model_code, ['class'=>'form-control']) !!}
 
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', $item->decoded, ['class'=>'form-control']) !!}
+    {!! Form::label('model_decoded', 'Nazwa') !!}
+    {!! Form::textarea('model_decoded', $item->model_decoded, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

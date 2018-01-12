@@ -5,8 +5,8 @@
 {!! Form::open(['method' => 'GET', 'route' => ['opcjeWyposazenia.insert']]) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', null, ['class'=>'form-control']) !!}
+    {!! Form::label('opcja_wyposazenia_code', 'Kod') !!}
+    {!! Form::text('opcja_wyposazenia_code', null, ['class'=>'form-control']) !!}
     
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', null, ['class'=>'form-control']) !!}
+    {!! Form::label('opcja_wyposazenia_decoded', 'Nazwa') !!}
+    {!! Form::textarea('opcja_wyposazenia_decoded', null, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

@@ -20,8 +20,8 @@
     <tbody>
     @foreach ($rows as $row)
     <tr>
-        <td>{{ $row->code }}</td>
-        <td>{{ $row->decoded }} </td>
+        <td>{{ $row->opcja_wyposazenia_code }}</td>
+        <td>{{ $row->opcja_wyposazenia_decoded }} </td>
         <td><a href="{{ route('opcjeWyposazenia.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['opcjeWyposazenia.delete', $row], 'method' => 'DELETE']) !!}

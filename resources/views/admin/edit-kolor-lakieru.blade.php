@@ -5,8 +5,8 @@
 {!! Form::model($item, ['route' => ['edit.VarnishColorsUpdate', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', $item->code, ['class'=>'form-control']) !!}
+    {!! Form::label('kolor_lakieru_code', 'Kod') !!}
+    {!! Form::text('kolor_lakieru_code', $item->kolor_lakieru_code, ['class'=>'form-control']) !!}
 
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', $item->decoded, ['class'=>'form-control']) !!}
+    {!! Form::label('kolor_lakieru_decoded', 'Nazwa') !!}
+    {!! Form::textarea('kolor_lakieru_decoded', $item->kolor_lakieru_decoded, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

@@ -12,14 +12,16 @@
     <thead>
         <tr>
             <th>Kod</th>
-            <th>Nazwa</th>
+            <th>Kolor</th>
             <th>Edytuj</th>
             <th>Usuń</th>
         </tr>
     </thead>
     <tbody>
+        
     @foreach ($rows as $row)
     <tr>
+{{ dd($row) }}
         <td>{{ $row->code }}</td>
         <td>{{ $row->decoded }} </td>
         <td><a href="{{ route('dostepneModele.edit', $row) }}" class="btn btn-info">Edytuj</a></td>

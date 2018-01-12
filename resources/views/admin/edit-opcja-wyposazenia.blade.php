@@ -5,8 +5,8 @@
 {!! Form::model($item, ['route' => ['opcjeWyposazenia.update', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', $item->code, ['class'=>'form-control']) !!}
+    {!! Form::label('opcja_wyposazenia_code', 'Kod') !!}
+    {!! Form::text('opcja_wyposazenia_code', $item->opcja_wyposazenia_code, ['class'=>'form-control']) !!}
 
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', $item->decoded, ['class'=>'form-control']) !!}
+    {!! Form::label('opcja_wyposazenia_decoded', 'Nazwa') !!}
+    {!! Form::textarea('opcja_wyposazenia_decoded', $item->opcja_wyposazenia_decoded, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

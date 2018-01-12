@@ -15,8 +15,8 @@ class CreateBazaKolorowLakierusTable extends Migration
     {
         Schema::create('baza_kolorow_lakierus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
-            $table->string('decoded')->nullable();
+            $table->string('kolor_lakieru_code');
+            $table->string('kolor_lakieru_decoded')->nullable();
             $table->timestamps();
         });
     }

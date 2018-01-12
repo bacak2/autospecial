@@ -5,8 +5,8 @@
 {!! Form::open(['method' => 'GET', 'route' => ['koloryTapicerki.insert']]) !!}
 <div class="form-group">
     
-    {!! Form::label('code', 'Kod') !!}
-    {!! Form::text('code', null, ['class'=>'form-control']) !!}
+    {!! Form::label('kolor_tapicerki_code', 'Kod') !!}
+    {!! Form::text('kolor_tapicerki_code', null, ['class'=>'form-control']) !!}
     
     @if ($errors->any())
         @foreach($errors->all() as $error)
@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('decoded', 'Nazwa') !!}
-    {!! Form::textarea('decoded', null, ['class'=>'form-control']) !!}
+    {!! Form::label('kolor_tapicerki_decoded', 'Nazwa') !!}
+    {!! Form::textarea('kolor_tapicerki_decoded', null, ['class'=>'form-control']) !!}
 </div>    
 
 {!! Form::submit('Zapisz', ['class'=>'btn btn-primary']) !!}

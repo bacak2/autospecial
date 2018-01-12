@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class KoloryLakieru extends FormRequest
 {
     
-    protected $fillable = ['code', 'decoded'];
+    protected $fillable = ['kolor_lakieru_code', 'kolor_lakieru_decoded'];
     
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class KoloryLakieru extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required|max:4|min:4'
+            'kolor_lakieru_code' => 'required|max:4|min:4'
         ];
     }
     
@@ -39,9 +39,9 @@ class KoloryLakieru extends FormRequest
     public function messages()
     {
         return [
-            'code.required' => 'Pole Kod musi być wypełnione',
-            'code.max' => 'Pole Kod musi mieć 4 znaki',
-            'code.min' => 'Pole Kod musi mieć 4 znaki'
+            'kolor_lakieru_code.required' => 'Pole Kod musi być wypełnione',
+            'kolor_lakieru_code.max' => 'Pole Kod musi mieć 4 znaki',
+            'kolor_lakieru_code.min' => 'Pole Kod musi mieć 4 znaki'
         ];
     }
 }

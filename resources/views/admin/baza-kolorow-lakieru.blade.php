@@ -20,8 +20,8 @@
     <tbody>
     @foreach ($rows as $row)
     <tr>
-        <td>{{ $row->code }}</td>
-        <td>{{ $row->decoded }} </td>
+        <td>{{ $row->kolor_lakieru_code }}</td>
+        <td>{{ $row->kolor_lakieru_decoded }} </td>
         <td><a href="{{ route('edit.VarnishColors', $row) }}" class="btn btn-info">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['delete.VarnishColors', $row], 'method' => 'DELETE']) !!}
