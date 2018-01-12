@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
 Auth::routes();
@@ -42,6 +42,11 @@ Route::get('/admin/edit', function () {
 Route::get('/admin/baza-dostepnych-modeli', [
     'uses' => 'BazaDostepnychModeliController@show',
     'as' => 'import.show'    
+]);
+
+Route::POST('/admin/baza-dostepnych-modeli/upload', [
+    'uses' => 'BazaDostepnychModeliController@upload',
+    'as' => 'dostepneModele.upload'    
 ]);
 
 Route::get('/admin/baza-dostepnych-modeli/import', [
