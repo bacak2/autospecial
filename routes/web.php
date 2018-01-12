@@ -28,20 +28,6 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-/*Route::get('/admin/baza-dostepnosci', [
-    'uses' => 'ImportController@show',
-    'as' => 'import.show'    
-]);
-
-
-Route::get('/admin/baza-modeli', [
-    'uses' => 'ImportController@showModels',
-    'as' => 'import.showModels'    
-]);
- * 
- */
-
-
 Route::get('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
     'as' => 'import.showEquipmentOptions'    
