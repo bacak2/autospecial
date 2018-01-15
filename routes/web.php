@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/details/{item}', [
+    'uses' => 'HomeController@details',
+    'as' => 'home.details'    
+]);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/import', [
     'uses' => 'ImportController@index',
