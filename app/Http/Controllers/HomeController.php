@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BazaDostepnychModeli;
+use App\BazaKolorowLakieru;
 
 class HomeController extends Controller
 {
@@ -20,8 +21,12 @@ class HomeController extends Controller
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code')
                 ->leftJoin('baza_opcji_wyposazenias', 'baza_dostepnych_modelis.opcje', '=', 'baza_opcji_wyposazenias.opcja_wyposazenia_code')
                 ->paginate(5);
-
-        return view('main', compact('rows'));
+        
+        $models = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
+        
+        $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
+        
+        return view('main', compact('rows', 'models','colors'));
     }
     
     public function details(BazaDostepnychModeli $item) {
