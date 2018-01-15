@@ -32,7 +32,9 @@ class HomeController extends Controller
 
         $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
         
-        return view('main', compact('rows', 'models','colors'));
+        $total = $rows->total();
+        
+        return view('main', compact('rows', 'total', 'models','colors'));
     }
     
     public function details(BazaDostepnychModeli $item) {
