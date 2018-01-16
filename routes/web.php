@@ -176,6 +176,11 @@ Route::get('/admin/baza-kolorow-tapicerki', [
     'as' => 'import.showUpholsteringColors'    
 ]);
 
+Route::POST('/admin/baza-kolorow-tapicerki/upload', [
+    'uses' => 'BazaKolorowTapicerkiController@upload',
+    'as' => 'koloryTapicerki.upload'    
+]);
+
 Route::get('/admin/baza-kolorow-tapicerki/import', [
     'uses' => 'BazaKolorowTapicerkiController@import',
     'as' => 'koloryTapicerki.import'    
