@@ -181,11 +181,6 @@ Route::POST('/admin/baza-kolorow-tapicerki/upload', [
     'as' => 'koloryTapicerki.upload'    
 ]);
 
-Route::get('/admin/baza-kolorow-tapicerki/import', [
-    'uses' => 'BazaKolorowTapicerkiController@import',
-    'as' => 'koloryTapicerki.import'    
-]);
-
 Route::get('/admin/baza-kolorow-tapicerki/new', [
     'uses' => 'BazaKolorowTapicerkiController@newItem',
     'as' => 'koloryTapicerki.new'    

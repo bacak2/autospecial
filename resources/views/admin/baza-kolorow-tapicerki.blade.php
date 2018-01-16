@@ -2,18 +2,14 @@
 
 @section('content')
 <div class="card-block">
-    <h4 class="card-title">Lista kolorów tapicerki</h4>
-        
-        <?php
-           echo Form::open(array('url' => '/admin/baza-kolorow-tapicerki/upload','files'=>'true'));
-           echo 'Wybierz plik do zaimportowania';
-           echo Form::file('importFile');
-           echo Form::submit('Importuj plik');
-           echo Form::close();
-        ?>   
+    <h4 class="card-title">Baza kolorów tapicerki</h4>
+        {!! Form::open(['method' => 'POST', 'route' => ['koloryTapicerki.upload'], 'files'=>'true', 'class'=>'pull-right']) !!}
+        {!! Form::label('importFile', 'Wybierz plik do importu') !!}
+        {!! Form::file('importFile') !!}
+        <button class="btn btn-primary pull-left">Zapisz</button>
+        {!! Form::close() !!}        
     
-    <a href="{{ route('koloryTapicerki.import') }}" class="btn btn-primary">Importuj</a>
-    <a href="{{ route('koloryTapicerki.new') }}" class="btn btn-success">Dodaj nowy</a>
+    <a href="{{ route('koloryTapicerki.new') }}" class="btn btn-success pull-left">Dodaj nowy</a>
 </div>
 
 <table class="table table-striped table-hover">
