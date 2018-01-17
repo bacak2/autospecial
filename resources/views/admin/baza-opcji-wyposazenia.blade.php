@@ -12,6 +12,7 @@
     <thead>
         <tr>
             <th>Kod</th>
+            <th>Dla</th>
             <th>Nazwa</th>
             <th>Edytuj</th>
             <th>Usuń</th>
@@ -21,11 +22,12 @@
     @foreach ($rows as $row)
     <tr>
         <td>{{ $row->opcja_wyposazenia_code }}</td>
+        <td>{{ $row->code3 }} </td>
         <td>{{ $row->opcja_wyposazenia_decoded }} </td>
-        <td><a href="{{ route('opcjeWyposazenia.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
+        <td><a href="{{ route('opcjeWyposazenia.edit', $row) }}" class="btn btn-info pull-left">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['opcjeWyposazenia.delete', $row], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger">Usuń</button>
+            <button class="btn btn-danger pull-left">Usuń</button>
             {!! Form::close() !!}
         </td>
     </tr>    
