@@ -172,7 +172,8 @@ class ImportModel extends Model
         $importedArray = $importReader->noHeading()->toArray();
         $importedArray = $importedArray[0];
         //$importedArray = $importReader->toArray();
-
+        
+        //uciąć  trzy pierwsze litery
         
         //umieść w BD
         $insertRow = new BazaModeli();
@@ -181,6 +182,8 @@ class ImportModel extends Model
             $dataSet[] = [
                 'model_code'      => $row[0],
                 'model_decoded'   => $row[1],
+                
+//dołożyć 3 litery z $var wyżej
             ];
         }
 
