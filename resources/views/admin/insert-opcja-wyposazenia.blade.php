@@ -3,6 +3,12 @@
 @section('content')
 
 {!! Form::open(['method' => 'GET', 'route' => ['opcjeWyposazenia.insert']]) !!}
+
+<div class="form-group">
+    {!! Form::label('opcja_wyposazenia_code', 'Model') !!}
+    {!! Form::select('model_code', $models, null ) !!}
+</div>
+
 <div class="form-group">
     
     {!! Form::label('opcja_wyposazenia_code', 'Kod') !!}
