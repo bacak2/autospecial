@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['method' => 'GET', 'route' => ['insert.VarnishColors']]) !!}
+{!! Form::open(['method' => 'GET', 'route' => ['koloryLakieru.insert']]) !!}
 <div class="form-group">
     
     {!! Form::label('kolor_lakieru_code', 'Kod') !!}

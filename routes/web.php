@@ -128,7 +128,7 @@ Route::delete('/admin/baza-modeli/delete/{item}', [
 ]);
 
 /////        Routing for baza-kolorow-lakieru         //////
-
+/*
 Route::get('/admin/baza-kolorow-lakieru', [
     'uses' => 'ImportController@showVarnishColors',
     'as' => 'import.showVarnishColors'    
@@ -167,6 +167,48 @@ Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
 Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
     'uses' => 'DeleteController@VarnishColors',
     'as' => 'delete.VarnishColors'    
+]);
+ * 
+ */
+
+Route::get('/admin/baza-kolorow-lakieru', [
+    'uses' => 'BazaKolorowLakieruController@show',
+    'as' => 'import.showVarnishColors'    
+]);
+
+Route::POST('/admin/baza-kolorow-lakieru/upload', [
+    'uses' => 'BazaKolorowLakieruController@upload',
+    'as' => 'koloryLakieru.upload'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/new', [
+    'uses' => 'BazaKolorowLakieruController@newItem',
+    'as' => 'koloryLakieru.new'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/insert', [
+    'uses' => 'BazaKolorowLakieruController@insert',
+    'as' => 'koloryLakieru.insert'    
+]);
+
+Route::PUT('/admin/baza-kolorow-lakieru/{item}', [
+    'uses' => 'BazaKolorowLakieruController@update',
+    'as' => 'koloryLakieru.update'    
+]);
+
+Route::PUT('/admin/baza-kolorow-lakieru/save/{item}', [
+    'uses' => 'BazaKolorowLakieruController@save',
+    'as' => 'koloryLakieru.save'    
+]);
+
+Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
+    'uses' => 'BazaKolorowLakieruController@edit',
+    'as' => 'koloryLakieru.edit'    
+]);
+
+Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
+    'uses' => 'BazaKolorowLakieruController@delete',
+    'as' => 'koloryLakieru.delete'    
 ]);
 
 /////        Routing for baza-kolorow-tapicerki         //////

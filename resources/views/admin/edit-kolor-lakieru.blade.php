@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::model($item, ['route' => ['edit.VarnishColorsUpdate', $item], 'method' => 'PUT']) !!}
+{!! Form::model($item, ['route' => ['koloryTapicerki.update', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
     {!! Form::label('kolor_lakieru_code', 'Kod') !!}

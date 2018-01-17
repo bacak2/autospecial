@@ -89,17 +89,13 @@ class ImportModel extends Model
     }
     
     /*
-     * importuje plik '*.xls' i wprowadza do bazy danych
-     * @parametr string - nazwa submitowanego pliku     
+     * importuje plik '*.xls' i wprowadza do bazy danych   
      */
-    public function importVarnishColors($name) {
-        $importReader = Excel::load($name);
+    public function importVarnishColors($handle) {
+        $importReader = Excel::load($handle);
         
         //przy imporcie pliku bez nagłówków jako pola w tabeli
         $importedArray = $importReader->noHeading()->toArray();
-        $importedArray = $importedArray[0];
-        //$importedArray = $importReader->toArray();
-
         
         //umieść w BD
         $insertRow = new BazaKolorowLakieru();
@@ -123,7 +119,6 @@ class ImportModel extends Model
         
         //przy imporcie pliku bez nagłówków jako pola w tabeli
         $importedArray = $importReader->noHeading()->toArray();
-        $importedArray = $importedArray[0];
         
         //umieść w BD
         $insertRow = new BazaKolorowTapicerki();

@@ -24,12 +24,12 @@
     <tbody>
     @foreach ($rows as $row)
     <tr>
-        <td>{{ $row->kolor_tapicerki_code }}</td>
-        <td>{{ $row->kolor_tapicerki_decoded }} </td>
-        <td><a href="{{ route('koloryTapicerki.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
+        <td><span class="pull-left">{{ $row->kolor_tapicerki_code }}</span></td>
+        <td><span class="pull-left">{{ $row->kolor_tapicerki_decoded }}</span></td>
+        <td><a href="{{ route('koloryTapicerki.edit', $row) }}" class="btn btn-info pull-left">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['koloryTapicerki.delete', $row], 'method' => 'DELETE']) !!}
-            <button class="btn btn-danger">Usuń</button>
+            <button class="btn btn-danger pull-left">Usuń</button>
             {!! Form::close() !!}
         </td>
     </tr>    
