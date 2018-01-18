@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<h2> Kod: {{ $item[0]->model_code3 }} </h2>
+<h2> opc1: {{ $item[0]->opcja_wyposazenia_code }} oznacza: {{ $item[0]->opcja_wyposazenia_decoded }}  </h2>
+<h2> opc2: {{ $item[1]->opcja_wyposazenia_code }} onzacza: {{ $item[1]->opcja_wyposazenia_decoded }}</h2>
+<?php /*
 {!! Form::model($item, ['route' => ['opcjeWyposazenia.update', $item], 'method' => 'PUT']) !!}
 <div class="form-group">
     
@@ -25,4 +28,7 @@
 {!! link_to(URL::previous(), 'Anuluj', ['class'=>'btn btn-default']) !!}
 
 {!! Form::close() !!}
+*
+ *  /
+?>
 @endsection

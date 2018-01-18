@@ -218,6 +218,11 @@ Route::get('/admin/baza-opcji-wyposazenia', [
     'as' => 'import.showEquipmentOptions'    
 ]);
 
+Route::POST('/admin/baza-opcji-wyposazenia/upload', [
+    'uses' => 'BazaOpcjiWyposazeniaController@upload',
+    'as' => 'opcjeWyposazenia.upload'    
+]);
+
 Route::get('/admin/baza-opcji-wyposazenia/import', [
     'uses' => 'BazaOpcjiWyposazeniaController@import',
     'as' => 'opcjeWyposazenia.import'    

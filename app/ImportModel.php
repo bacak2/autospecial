@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Excel;
+use DB;
 use App\BazaDostepnosci;
 use App\BazaDostepnychModeli;
 use App\BazaModeli;
@@ -68,24 +69,38 @@ class ImportModel extends Model
             // w transakcji: 
             // drop/truncate całą tabele
             
+            $dataSet[] = [
             // insert new
-            $insertRow->komisja             = $row["komisja"];
-            $insertRow->model               = $row["model"];
-            $insertRow->rok_modelowy        = $row["rok_modelowy"];
-            $insertRow->kolor               = $row["kolor"];
-            $insertRow->tapicerka           = $row["tapicerka"];
-            $insertRow->opcje               = $row["opcje"];
-            $insertRow->opcje_importerskie  = $row["opcje_importerskie"];
-            $insertRow->cena_dla_klienta    = $row["cena_dla_klienta"];
+            'komisja'             => $row["komisja"],
+            'model'               => $row["model"],
+            'rok_modelowy'        => $row["rok_modelowy"],
+            'kolor'               => $row["kolor"],
+            'tapicerka'           => $row["tapicerka"],
+            'opcje'               => $row["opcje"],
+            'opcje_importerskie'  => $row["opcje_importerskie"],
+            'cena_dla_klienta'    => $row["cena_dla_klienta"]
+            ];
             
-            $insertRow->save();
-            
-            //dla testów
-            return true;
+            break;
         }
         
-        //zwróć true przy powodzeniu
-        return true;
+        BazaDostepnychModeli::insert($dataSet);
+        
+//  Zwrotka z id dodanego przed chwilą modelu
+//      //dostajemy model_id
+//
+//  Pobierz z bazy opcji wyposażenia id dla danego modelu i kodu3
+        //dostajemy equipment_id  i equipment_decoded
+
+        
+        $options = $importedArray[0]["opcje"];
+        $options = explode(' ', $options);
+        //dd($options);
+        DB::table('model_to_equipments')->insert(
+            ['model_id' => '1', 'equipment_id' => $options[0], 'equipment_decoded' => 0]
+        );
+        //BazaDostepnychModeli::insert($dataSet);
+exit();
     }
     
     /*
@@ -143,17 +158,15 @@ class ImportModel extends Model
         
         //przy imporcie pliku bez nagłówków jako pola w tabeli
         $importedArray = $importReader->noHeading()->toArray();
-        $importedArray = $importedArray[0];
-        //$importedArray = $importReader->toArray();
-
         
         //umieść w BD
         $insertRow = new BazaOpcjiWyposazenia();
      
         foreach ($importedArray as $row) {
             $dataSet[] = [
-                'opcja_wyposazenia_code'      => $row[0],
-                'opcja_wyposazenia_decoded'   => $row[1],
+                'model_code3'                 => $row[0],
+                'opcja_wyposazenia_code'      => $row[1],
+                'opcja_wyposazenia_decoded'   => $row[2],
             ];
         }
 

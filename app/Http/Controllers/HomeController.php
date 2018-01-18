@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\BazaDostepnychModeli;
 use App\BazaModeli;
 use App\BazaKolorowLakieru;
+use App\BazaOpcjiWyposazenia;
 
 class HomeController extends Controller
 {
@@ -37,7 +38,23 @@ class HomeController extends Controller
         return view('main', compact('rows', 'total', 'models','colors'));
     }
     
-    public function details(BazaDostepnychModeli $item) {
-        return view('details', compact('item'));
+    public function details($itemKomisja) {
+        
+            $item = BazaDostepnychModeli::where('komisja',$itemKomisja)
+                ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
+                ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
+                ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code')
+                ->leftJoin('baza_opcji_wyposazenias', 'baza_dostepnych_modelis.opcje', '=', 'baza_opcji_wyposazenias.opcja_wyposazenia_code')
+                ->first(); 
+       
+            $wyposazenie = $item->opcje;
+            $wyposazenie = explode(' ', $wyposazenie);
+            //dd($wyposazenie);
+            
+            foreach($wyposazenie as $row) {
+                $it = BazaOpcjiWyposazenia::where('model_code3', $row)->first();
+                dd($it);
+            }
+        return view('details', compact('item', 'wyposazenie'));
     }
 }
