@@ -69,8 +69,9 @@ class ImportModel extends Model
             // w transakcji: 
             // drop/truncate całą tabele
             // 
+
             //zamień cenę na prawidłową do wyświetlania
-            //$price = strtr(substr($row["cena_dla_klienta"], 3),',.','.,');            
+            $price = strtr(substr($row["cena_dla_klienta"], 3),',.','.,');            
             
             $dataSet[] = [
             'komisja'             => $row["komisja"],
@@ -80,7 +81,7 @@ class ImportModel extends Model
             'tapicerka'           => $row["tapicerka"],
             'opcje'               => $row["opcje"],
             'opcje_importerskie'  => $row["opcje_importerskie"],
-            'cena_dla_klienta'    => $row["cena_dla_klienta"]
+            'cena_dla_klienta'    => $price
             ];
 
         }
