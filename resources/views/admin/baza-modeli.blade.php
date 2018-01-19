@@ -3,9 +3,13 @@
 @section('content')
 <div class="card-block">
     <h4 class="card-title">Baza modeli</h4>
-  
-    <a href="{{ route('modele.import') }}" class="btn btn-primary">Importuj</a>
-    <a href="{{ route('modele.new') }}" class="btn btn-success">Dodaj nowy</a>
+        {!! Form::open(['method' => 'POST', 'route' => ['modele.upload'], 'files'=>'true', 'class'=>'pull-right']) !!}
+        {!! Form::label('importFile', 'Wybierz plik do importu') !!}
+        {!! Form::file('importFile') !!}
+        <button class="btn btn-primary pull-left">Zapisz</button>
+        {!! Form::close() !!}  
+        
+    <a href="{{ route('modele.new') }}" class="btn btn-success pull-left">Dodaj nowy</a>
 </div>
 
 <table class="table table-striped table-hover">

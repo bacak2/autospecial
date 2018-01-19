@@ -35,5 +35,4 @@
     </tbody>
 </table>
 
-    {{ $rows->links() }}
 @endsection

@@ -68,9 +68,11 @@ class ImportModel extends Model
         foreach ($importedArray as $row) {
             // w transakcji: 
             // drop/truncate całą tabele
+            // 
+            //zamień cenę na prawidłową do wyświetlania
+            //$price = strtr(substr($row["cena_dla_klienta"], 3),',.','.,');            
             
             $dataSet[] = [
-            // insert new
             'komisja'             => $row["komisja"],
             'model'               => $row["model"],
             'rok_modelowy'        => $row["rok_modelowy"],
@@ -80,27 +82,11 @@ class ImportModel extends Model
             'opcje_importerskie'  => $row["opcje_importerskie"],
             'cena_dla_klienta'    => $row["cena_dla_klienta"]
             ];
-            
-            break;
+
         }
         
         BazaDostepnychModeli::insert($dataSet);
-        
-//  Zwrotka z id dodanego przed chwilą modelu
-//      //dostajemy model_id
-//
-//  Pobierz z bazy opcji wyposażenia id dla danego modelu i kodu3
-        //dostajemy equipment_id  i equipment_decoded
 
-        
-        $options = $importedArray[0]["opcje"];
-        $options = explode(' ', $options);
-        //dd($options);
-        DB::table('model_to_equipments')->insert(
-            ['model_id' => '1', 'equipment_id' => $options[0], 'equipment_decoded' => 0]
-        );
-        //BazaDostepnychModeli::insert($dataSet);
-exit();
     }
     
     /*
@@ -183,20 +169,16 @@ exit();
         
         //przy imporcie pliku bez nagłówków jako pola w tabeli
         $importedArray = $importReader->noHeading()->toArray();
-        $importedArray = $importedArray[0];
-        //$importedArray = $importReader->toArray();
-        
-        //uciąć  trzy pierwsze litery
-        
+                
         //umieść w BD
         $insertRow = new BazaModeli();
      
         foreach ($importedArray as $row) {
+            $model_code3 = substr($row[0], 0, 3);
             $dataSet[] = [
                 'model_code'      => $row[0],
                 'model_decoded'   => $row[1],
-                
-//dołożyć 3 litery z $var wyżej
+                'model_code3'     => $model_code3
             ];
         }
 

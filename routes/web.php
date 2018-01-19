@@ -92,6 +92,11 @@ Route::get('/admin/baza-modeli', [
     'as' => 'import.showModels'    
 ]);
 
+Route::POST('/admin/baza-modeli/upload', [
+    'uses' => 'BazaModeliController@upload',
+    'as' => 'modele.upload'    
+]);
+
 Route::get('/admin/baza-modeli/import', [
     'uses' => 'BazaModeliController@import',
     'as' => 'modele.import'    
