@@ -26,17 +26,13 @@ Route::get('/admin/import', [
 ]);
 
 Route::get('/admin', function () {
-    return view('admin');
+    return redirect()->route("import.show");
 });
 
 Route::get('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
     'as' => 'import.showEquipmentOptions'    
 ]);
-
-Route::get('/admin/edit', function () {
-    return view('helpers.edit');
-});
 
 /////        Routing for baza-dostepnych-modeli        //////
 

@@ -26,19 +26,28 @@ class HomeController extends Controller
         if ($filters->has('color') && $filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
         if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
 
-        $rows = $rows->paginate(5);
+        $rows = $rows//->whereNotNull('model_decoded')
+                ->orderBy('baza_dostepnych_modelis.id')
+                ->paginate(5);
 
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
 
         foreach ($models as $key=>$value) {
 
-            if ($key != "122" && $key != "3G2" && $key != "3G5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+            if ($key != "122" && $key != "3G2" && $key != "3G5" && $key != "6C1" && $key != "AW1" && $key != "AD1" && $key != "BW2" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
         }
         
         $models->prepend("move up!","122")
                 ->prepend("Passat Highline","3G2")
-                ->prepend("Passat Variant Highline","3G5");
-      
+                ->prepend("Passat Variant Highline","3G5")
+                ->prepend("Polo Trendline", "6C1")
+                ->prepend("Polo Highline", "AW1")
+                ->prepend("Tiguan Highline", "AD1")
+                ->prepend("Tiguan Allspace", "BW2")
+                ->prepend("Golf Sportsvan", "AM1")
+                ->prepend("Golf R", "BQ1")
+                ->prepend("Golf Variant", "BV5");        
+     
         $models->prepend('-- Wybierz --', 0);
         $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
         $colors->prepend('-- Wybierz --', NULL);
