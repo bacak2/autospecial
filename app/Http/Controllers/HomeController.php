@@ -23,33 +23,23 @@ class HomeController extends Controller
                 ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
                 ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code');
-        if ($filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
-        if($filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
+        if ($filters->has('color') && $filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
+        if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
 
-        /*
-         * if($filters->color != 0) $rows->where('kolor', '=', $filters->get('color')) ;
-        
-         * 
-         */
-        
-        //$rows->where('name', 'like', 'T%');
-        //dd($rows->toSql());
         $rows = $rows->paginate(5);
-        //dd($rows->toSql());
 
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
-//dd($models);//tu jes dobry kod
-  
-        $mod = &$models;
-            foreach($mod as $key => $value) {
-                
-                $value= substr($value, 0, strpos($value, ' '));
-                //dd($value);
-            }
-//dd($models);
+
+        foreach ($models as $key=>$value) {
+
+            if ($key != "122" && $key != "3G2" && $key != "3G5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+        }
         
+        $models->prepend("move up!","122")
+                ->prepend("Passat Highline","3G2")
+                ->prepend("Passat Variant Highline","3G5");
+      
         $models->prepend('-- Wybierz --', 0);
-//dd($models); //tu zamienia inty na 1, 2, 3 przez prepend
         $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
         $colors->prepend('-- Wybierz --', NULL);
 

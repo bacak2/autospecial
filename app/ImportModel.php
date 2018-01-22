@@ -59,10 +59,6 @@ class ImportModel extends Model
         $importReader = Excel::load($name);
         $importedArray = $importReader->toArray();
         
-        //przy imporcie pliku bez nagłówków jako pola w tabeli
-        //$importedArray = $importReader->noHeading()->toArray();
-
-        
         //umieść w BD
         $insertRow = new BazaDostepnychModeli();
         foreach ($importedArray as $row) {
@@ -85,7 +81,7 @@ class ImportModel extends Model
             ];
 
         }
-        
+        BazaDostepnychModeli::truncate();
         BazaDostepnychModeli::insert($dataSet);
 
     }
