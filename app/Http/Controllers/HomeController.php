@@ -23,10 +23,11 @@ class HomeController extends Controller
                 ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
                 ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code');
-        
-//  coś tu jest nie tak wyświetla ? zamiast wartości. Wcześniej z has() działało ale musiałem dodać sprawdzenie czy jest wybrana jakaś opcja z filtru
-        /*if($filters->model != 0) $rows->where('model', 'LIKE', $filters->get('model')) ;
-        if($filters->color != 0) $rows->where('kolor', '=', $filters->get('color')) ;
+        if ($filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
+        if($filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
+
+        /*
+         * if($filters->color != 0) $rows->where('kolor', '=', $filters->get('color')) ;
         
          * 
          */
@@ -39,15 +40,15 @@ class HomeController extends Controller
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
 //dd($models);//tu jes dobry kod
   
-        /* 
-        *        
-            foreach($models as $key => $value) {
+        $mod = &$models;
+            foreach($mod as $key => $value) {
+                
                 $value= substr($value, 0, strpos($value, ' '));
+                //dd($value);
             }
-        * 
-        */
+//dd($models);
         
-        $models->prepend('-- Wybierz --', NULL);
+        $models->prepend('-- Wybierz --', 0);
 //dd($models); //tu zamienia inty na 1, 2, 3 przez prepend
         $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
         $colors->prepend('-- Wybierz --', NULL);
