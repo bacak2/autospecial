@@ -25,15 +25,30 @@ class HomeController extends Controller
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code');
         
 //  coś tu jest nie tak wyświetla ? zamiast wartości. Wcześniej z has() działało ale musiałem dodać sprawdzenie czy jest wybrana jakaś opcja z filtru
-        if($filters->model != 0) $rows->where('model', '=', $filters->get('model')) ;
+        /*if($filters->model != 0) $rows->where('model', 'LIKE', $filters->get('model')) ;
         if($filters->color != 0) $rows->where('kolor', '=', $filters->get('color')) ;
-        //dd($rows->toSql());
         
+         * 
+         */
+        
+        //$rows->where('name', 'like', 'T%');
+        //dd($rows->toSql());
         $rows = $rows->paginate(5);
+        //dd($rows->toSql());
 
-        $models = BazaModeli::pluck('model_decoded', 'model_code');
+        $models = BazaModeli::pluck('model_decoded', 'model_code3');
+//dd($models);//tu jes dobry kod
+  
+        /* 
+        *        
+            foreach($models as $key => $value) {
+                $value= substr($value, 0, strpos($value, ' '));
+            }
+        * 
+        */
+        
         $models->prepend('-- Wybierz --', NULL);
-
+//dd($models); //tu zamienia inty na 1, 2, 3 przez prepend
         $colors = BazaKolorowLakieru::pluck('kolor_lakieru_decoded', 'kolor_lakieru_code');
         $colors->prepend('-- Wybierz --', NULL);
 

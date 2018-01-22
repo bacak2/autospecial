@@ -233,7 +233,7 @@ Route::get('/admin/baza-opcji-wyposazenia/import', [
     'as' => 'opcjeWyposazenia.import'    
 ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/new', [
+Route::get('/admin/baza-opcji-wyposazenia/new/{item}', [
     'uses' => 'BazaOpcjiWyposazeniaController@newItem',
     'as' => 'opcjeWyposazenia.new'    
 ]);
@@ -253,12 +253,17 @@ Route::PUT('/admin/baza-opcji-wyposazenia/save/{item}', [
     'as' => 'opcjeWyposazenia.save'    
 ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/edit/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@edit',
-    'as' => 'opcjeWyposazenia.edit'    
+Route::get('/admin/baza-opcji-wyposazenia/details/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@details',
+    'as' => 'opcjeWyposazenia.details'    
 ]);
 
 Route::delete('/admin/baza-opcji-wyposazenia/delete/{item}', [
     'uses' => 'BazaOpcjiWyposazeniaController@delete',
     'as' => 'opcjeWyposazenia.delete'    
+]);
+
+Route::get('/admin/baza-opcji-wyposazenia/edit/{item}', [
+    'uses' => 'BazaOpcjiWyposazeniaController@edit',
+    'as' => 'opcjeWyposazenia.edit'    
 ]);

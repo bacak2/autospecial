@@ -21,7 +21,7 @@
     @foreach ($rows as $row)
     <tr>
         <td style="text-align: left">{{ $row->model_code3}} </td>
-        <td class="col-lg-8"><a href="{{ route('opcjeWyposazenia.edit', $row->model_code3) }}" class="btn btn-info pull-right">Szczegóły</a></td>
+        <td class="col-lg-8"><a href="{{ route('opcjeWyposazenia.details', $row->model_code3) }}" class="btn btn-info pull-right">Szczegóły</a></td>
     </tr>    
     @endforeach
     </tbody>

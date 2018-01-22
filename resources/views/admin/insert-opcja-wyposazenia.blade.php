@@ -1,25 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-
-{!! Form::open(['method' => 'GET', 'route' => ['opcjeWyposazenia.insert']]) !!}
-
-<div class="form-group">
-    {!! Form::label('opcja_wyposazenia_code', 'Model') !!}
-    {!! Form::select('model_code', $models, null ) !!}
-</div>
-
+{!! Form::model($item, ['route' => ['opcjeWyposazenia.insert', $item], 'method' => 'PUT']) !!}
+{!! Form::hidden('model_code3', $item->model_code3, ['class'=>'form-control']) !!}
 <div class="form-group">
     
     {!! Form::label('opcja_wyposazenia_code', 'Kod') !!}
     {!! Form::text('opcja_wyposazenia_code', null, ['class'=>'form-control']) !!}
-    
+
     @if ($errors->any())
         @foreach($errors->all() as $error)
             {{ $error }}
         @endforeach
     @endif
- 
+    
 </div>
 
 <div class="form-group">
