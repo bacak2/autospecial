@@ -7,7 +7,7 @@
 <div class="form-group">
     
     {!! Form::label('opcja_wyposazenia_code', 'Kod') !!}
-    {!! Form::text('opcja_wyposazenia_code', $item->opcja_wyposazenia_code, ['class'=>'form-control']) !!}
+    {!! Form::text('opcja_wyposazenia_code', $item->opcja_wyposazenia_code, ['class'=>'form-control', 'readonly'=>'readonly']) !!}
 
     @if ($errors->any())
         @foreach($errors->all() as $error)

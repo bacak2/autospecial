@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-{!! Form::model($item, ['route' => ['opcjeWyposazenia.insert', $item], 'method' => 'PUT']) !!}
+{!! Form::open(['method' => 'GET', 'route' => ['opcjeWyposazenia.insert']]) !!}
 {!! Form::hidden('model_code3', $item->model_code3, ['class'=>'form-control']) !!}
 <div class="form-group">
     
