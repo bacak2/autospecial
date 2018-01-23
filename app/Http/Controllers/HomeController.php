@@ -26,9 +26,15 @@ class HomeController extends Controller
         if ($filters->has('color') && $filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
         if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
 
-        $rows = $rows//->whereNotNull('model_decoded')
-                ->orderBy('baza_dostepnych_modelis.id')
-                ->paginate(5);
+//nie pokazuj na stronie frontowej samochodów bez nazwy nieznalezionej w bazie
+//->whereNotNull('model_decoded')
+        if ($filters->has('sortuj') && $filters->sortuj === "priceAsc") $rows->orderBy('cena_dla_klienta');
+        else if ($filters->has('sortuj') && $filters->sortuj === "priceDesc") $rows->orderBy('cena_dla_klienta', 'desc');    
+        else if ($filters->has('sortuj') && $filters->sortuj === "nameAsc") $rows->orderBy('model_decoded'); 
+        else if ($filters->has('sortuj') && $filters->sortuj === "nameDesc") $rows->orderBy('model_decoded', 'desc'); 
+        else $rows->orderBy('baza_dostepnych_modelis.id');
+        
+        $rows =$rows->paginate(5);
 
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
 
