@@ -67,7 +67,7 @@ class ImportModel extends Model
             // 
 
             //zamień cenę na prawidłową do wyświetlania
-            $price = strtr(substr($row["cena_dla_klienta"], 3),',.','.,');            
+            $price = str_replace(',', '',substr($row["cena_dla_klienta"], 3));            
             
             $dataSet[] = [
             'komisja'             => $row["komisja"],
