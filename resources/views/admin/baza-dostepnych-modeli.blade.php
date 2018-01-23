@@ -27,12 +27,12 @@
         
     @foreach ($rows as $row)
     <tr>
-        <td>{{ $row->komisja }}</td>
-        <td>{{ $row->model_decoded }} </td>
-        <td>{{ $row->rok_modelowy }} </td>
-        <td>{{ $row->kolor_lakieru_decoded }} </td>
-        <td>{{ $row->kolor_tapicerki_decoded }} </td>
-        <td>{{ $row->cena_dla_klienta }} </td>
+        <td><span class="pull-left">{{ $row->komisja }}</span></td>
+        <td><span class="pull-left">{{ $row->model_decoded }}</span></td>
+        <td><span class="pull-left">{{ $row->rok_modelowy }} </span></td>
+        <td><span class="pull-left">{{ $row->kolor_lakieru_decoded }} </span></td>
+        <td><span class="pull-left">{{ $row->kolor_tapicerki_decoded }} </span></td>
+        <td><span class="pull-left">{{ $row->cena_dla_klienta }} </span></td>
         <!--td><a href="{{ route('dostepneModele.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['dostepneModele.delete', $row], 'method' => 'DELETE']) !!}

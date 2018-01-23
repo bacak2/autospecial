@@ -24,8 +24,8 @@
     <tbody>
     @foreach ($rows as $row)
     <tr>
-        <td>{{ $row->model_code }}</td>
-        <td>{{ $row->model_decoded }} </td>
+        <td><span class="pull-left">{{ $row->model_code }}</span></td>
+        <td><span class="pull-left">{{ $row->model_decoded }}</span></td>
         <td><a href="{{ route('modele.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
         <td>
             {!! Form::model($row, ['route' => ['modele.delete', $row], 'method' => 'DELETE']) !!}
