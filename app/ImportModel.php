@@ -152,7 +152,7 @@ class ImportModel extends Model
                 'opcja_wyposazenia_decoded'   => $row[2],
             ];
         }
-        //dd($dataSet);
+
         //BazaOpcjiWyposazenia::truncate();
         BazaOpcjiWyposazenia::insert($dataSet);
         
@@ -180,7 +180,7 @@ class ImportModel extends Model
             ];
         }
         
-        //BazaModeli::truncate();
+        BazaModeli::truncate();
         BazaModeli::insert($dataSet);
         
     }     
