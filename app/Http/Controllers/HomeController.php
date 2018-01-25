@@ -42,13 +42,14 @@ class HomeController extends Controller
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
 //dd($models);
         foreach ($models as $key=>$value) {
+            
             if ($key == "3G5") unset($models['3G5']);
             if ($key == "AW1") unset($models['AW1']);
             if ($key == "BW2") unset($models['BW2']);
-            if ($key != "122" && $key != "3G2" && $key != "6C1" && $key != "AD1" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+            if ($key != "122" && $key != "3G2" && $key != "3G5" && $key != "6C1" && $key != "AW1" && $key != "AD1" && $key != "BW2" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
         
         }
-        
+
         $models->prepend("move up!","122")
                 ->prepend("Passat","3G2")
                 ->prepend("Polo", "6C1")
