@@ -96,6 +96,9 @@
                                     <li class="nav-item">
                                       <a class="nav-link" href="{{ route('import.showEquipmentOptions') }}">Opcje wyposażenia</a>
                                     </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" href="{{ route('import.showPictrues') }}">Zdjęcia modeli</a>
+                                    </li>                                    
                                   </ul>
                                 </div>
                                 

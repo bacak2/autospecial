@@ -34,6 +34,16 @@ Route::get('/admin/baza-opcji-wyposazenia', [
     'as' => 'import.showEquipmentOptions'    
 ]);
 
+Route::get('/admin/zdjęcia-modeli', [
+    'uses' => 'ImportController@showPictrues',
+    'as' => 'import.showPictrues'    
+]);
+
+Route::POST('/admin/bzdjęcia-modeli/upload', [
+    'uses' => 'ImportController@uploadPictrue',
+    'as' => 'import.uploadPictrue'    
+]);
+
 /////        Routing for baza-dostepnych-modeli        //////
 
 Route::get('/admin/baza-dostepnych-modeli', [

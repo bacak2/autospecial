@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card-block">
-    <h2> Kod: {{ $item[0]->model_code3 }} </h2>
+    <h2> Kod modelu samochodu (pierwsze trzy znaki): {{ $item[0]->model_code3 }} </h2>
     <a href="{{ route('opcjeWyposazenia.new', $item[0]) }}" class="btn btn-success pull-left">Dodaj nowy</a>
 </div>
 

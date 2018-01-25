@@ -23,8 +23,11 @@ class HomeController extends Controller
                 ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
                 ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code');
-        if ($filters->has('color') && $filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
-        if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
+        //if ($filters->has('color') && $filters->color !== "0") $rows->where('kolor', '=', $filters->get('color')) ;
+        if ($filters->has('model') && $filters->model === "3G2") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "3G5%");
+        else if ($filters->has('model') && $filters->model === "6C1") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "AW1%");
+        else if ($filters->has('model') && $filters->model === "AD1") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "BW2%");
+        else if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
 
 //nie pokazuj na stronie frontowej samochodów bez nazwy nieznalezionej w bazie
 //->whereNotNull('model_decoded')
@@ -37,19 +40,19 @@ class HomeController extends Controller
         $rows =$rows->paginate(5);
 
         $models = BazaModeli::pluck('model_decoded', 'model_code3');
-
+//dd($models);
         foreach ($models as $key=>$value) {
-
-            if ($key != "122" && $key != "3G2" && $key != "3G5" && $key != "6C1" && $key != "AW1" && $key != "AD1" && $key != "BW2" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+            if ($key == "3G5") unset($models['3G5']);
+            if ($key == "AW1") unset($models['AW1']);
+            if ($key == "BW2") unset($models['BW2']);
+            if ($key != "122" && $key != "3G2" && $key != "6C1" && $key != "AD1" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+        
         }
         
         $models->prepend("move up!","122")
-                ->prepend("Passat Highline","3G2")
-                ->prepend("Passat Variant Highline","3G5")
-                ->prepend("Polo Trendline", "6C1")
-                ->prepend("Polo Highline", "AW1")
-                ->prepend("Tiguan Highline", "AD1")
-                ->prepend("Tiguan Allspace", "BW2")
+                ->prepend("Passat","3G2")
+                ->prepend("Polo", "6C1")
+                ->prepend("Tiguan", "AD1")
                 ->prepend("Golf Sportsvan", "AM1")
                 ->prepend("Golf R", "BQ1")
                 ->prepend("Golf Variant", "BV5");        

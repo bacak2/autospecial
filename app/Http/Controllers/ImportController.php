@@ -70,7 +70,22 @@ class ImportController extends Controller
         $rows = BazaDostepnosci::all();
 
         return view('admin.baza-opcji-wyposazenia', compact('rows'));
-    }    
+    }
+
+    public function showPictrues() {
+        
+        return view('admin.zdjęcia-modeli');
+        
+    }
     
+    public function uploadPictrue(Request $request) {
+        $file = $request->file('importFile')->getPathName();
+        $destinationPath = 'files/image/';
+        $tmp_name = $request->file('importFile')->getClientOriginalName();
+        //if (file_exists($destinationPath.$tmp_name)) exit();
+        $moved = move_uploaded_file($file, $destinationPath.$tmp_name);
+        
+        return redirect()->route("import.showPictrues")->with('status', 'Zdjęcie dodano pomyślnie');
+    }    
     
 }

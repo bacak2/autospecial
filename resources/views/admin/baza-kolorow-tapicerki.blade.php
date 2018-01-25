@@ -3,12 +3,12 @@
 @section('content')
 <div class="card-block">
     <h4 class="card-title">Baza kolorów tapicerki</h4>
-        {!! Form::open(['method' => 'POST', 'route' => ['koloryTapicerki.upload'], 'files'=>'true', 'class'=>'pull-right']) !!}
+        <!--{!! Form::open(['method' => 'POST', 'route' => ['koloryTapicerki.upload'], 'files'=>'true', 'class'=>'pull-right']) !!}
         {!! Form::label('importFile', 'Wybierz plik do importu') !!}
         {!! Form::file('importFile') !!}
         <button class="btn btn-primary pull-left">Zapisz</button>
         {!! Form::close() !!}        
-    
+        -->
     <a href="{{ route('koloryTapicerki.new') }}" class="btn btn-success pull-left">Dodaj nowy</a>
 </div>
 
