@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/details/{item}', [
     'uses' => 'HomeController@details',
     'as' => 'home.details'    
-]);
+])->where('item', '[0-9]+');
 
 Auth::routes();
 
