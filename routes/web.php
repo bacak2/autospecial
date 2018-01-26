@@ -46,230 +46,233 @@ Route::POST('/admin/bzdjęcia-modeli/upload', [
 
 /////        Routing for baza-dostepnych-modeli        //////
 
-Route::get('/admin/baza-dostepnych-modeli', [
-    'uses' => 'BazaDostepnychModeliController@show',
-    'as' => 'import.show'    
-]);
+Route::prefix('admin')->group(function () {
 
-Route::POST('/admin/baza-dostepnych-modeli/upload', [
-    'uses' => 'BazaDostepnychModeliController@upload',
-    'as' => 'dostepneModele.upload'    
-]);
+    Route::get('/baza-dostepnych-modeli', [
+        'uses' => 'BazaDostepnychModeliController@show',
+        'as' => 'import.show'    
+    ]);
 
-Route::get('/admin/baza-dostepnych-modeli/import', [
-    'uses' => 'BazaDostepnychModeliController@import',
-    'as' => 'dostepneModele.import'    
-]);
+    Route::POST('/baza-dostepnych-modeli/upload', [
+        'uses' => 'BazaDostepnychModeliController@upload',
+        'as' => 'dostepneModele.upload'    
+    ]);
 
-Route::get('/admin/baza-dostepnych-modeli/new', [
-    'uses' => 'BazaDostepnychModeliController@newItem',
-    'as' => 'dostepneModele.new'    
-]);
+    Route::get('/baza-dostepnych-modeli/import', [
+        'uses' => 'BazaDostepnychModeliController@import',
+        'as' => 'dostepneModele.import'    
+    ]);
 
-Route::get('/admin/baza-dostepnych-modeli/insert', [
-    'uses' => 'BazaDostepnychModeliController@insert',
-    'as' => 'dostepneModele.insert'    
-]);
+    Route::get('/baza-dostepnych-modeli/new', [
+        'uses' => 'BazaDostepnychModeliController@newItem',
+        'as' => 'dostepneModele.new'    
+    ]);
 
-Route::PUT('/admin/baza-dostepnych-modeli/{item}', [
-    'uses' => 'BazaDostepnychModeliController@update',
-    'as' => 'dostepneModele.update'    
-]);
+    Route::get('/baza-dostepnych-modeli/insert', [
+        'uses' => 'BazaDostepnychModeliController@insert',
+        'as' => 'dostepneModele.insert'    
+    ]);
 
-Route::PUT('/admin/baza-dostepnych-modeli/save/{item}', [
-    'uses' => 'BazaDostepnychModeliController@save',
-    'as' => 'dostepneModele.save'    
-]);
+    Route::PUT('/baza-dostepnych-modeli/{item}', [
+        'uses' => 'BazaDostepnychModeliController@update',
+        'as' => 'dostepneModele.update'    
+    ]);
 
-Route::get('/admin/baza-dostepnych-modeli/edit/{item}', [
-    'uses' => 'BazaDostepnychModeliController@edit',
-    'as' => 'dostepneModele.edit'    
-]);
+    Route::PUT('/baza-dostepnych-modeli/save/{item}', [
+        'uses' => 'BazaDostepnychModeliController@save',
+        'as' => 'dostepneModele.save'    
+    ]);
 
-Route::delete('/admin/baza-dostepnych-modeli/delete/{item}', [
-    'uses' => 'BazaDostepnychModeliController@delete',
-    'as' => 'dostepneModele.delete'    
-]);
+    Route::get('/baza-dostepnych-modeli/edit/{item}', [
+        'uses' => 'BazaDostepnychModeliController@edit',
+        'as' => 'dostepneModele.edit'    
+    ]);
 
-/////        Routing for baza-modeli        //////
+    Route::delete('/baza-dostepnych-modeli/delete/{item}', [
+        'uses' => 'BazaDostepnychModeliController@delete',
+        'as' => 'dostepneModele.delete'    
+    ]);
 
-Route::get('/admin/baza-modeli', [
-    'uses' => 'BazaModeliController@show',
-    'as' => 'import.showModels'    
-]);
+    /////        Routing for baza-modeli        //////
 
-Route::POST('/admin/baza-modeli/upload', [
-    'uses' => 'BazaModeliController@upload',
-    'as' => 'modele.upload'    
-]);
+    Route::get('/baza-modeli', [
+        'uses' => 'BazaModeliController@show',
+        'as' => 'import.showModels'    
+    ]);
 
-Route::get('/admin/baza-modeli/import', [
-    'uses' => 'BazaModeliController@import',
-    'as' => 'modele.import'    
-]);
+    Route::POST('/baza-modeli/upload', [
+        'uses' => 'BazaModeliController@upload',
+        'as' => 'modele.upload'    
+    ]);
 
-Route::get('/admin/baza-modeli/new', [
-    'uses' => 'BazaModeliController@newItem',
-    'as' => 'modele.new'    
-]);
+    Route::get('/baza-modeli/import', [
+        'uses' => 'BazaModeliController@import',
+        'as' => 'modele.import'    
+    ]);
 
-Route::get('/admin/baza-modeli/insert', [
-    'uses' => 'BazaModeliController@insert',
-    'as' => 'modele.insert'    
-]);
+    Route::get('/baza-modeli/new', [
+        'uses' => 'BazaModeliController@newItem',
+        'as' => 'modele.new'    
+    ]);
 
-Route::PUT('/admin/baza-modeli/{item}', [
-    'uses' => 'BazaModeliController@update',
-    'as' => 'modele.update'    
-]);
+    Route::get('/baza-modeli/insert', [
+        'uses' => 'BazaModeliController@insert',
+        'as' => 'modele.insert'    
+    ]);
 
-Route::PUT('/admin/baza-modeli/save/{item}', [
-    'uses' => 'BazaModeliController@save',
-    'as' => 'modele.save'    
-]);
+    Route::PUT('/baza-modeli/{item}', [
+        'uses' => 'BazaModeliController@update',
+        'as' => 'modele.update'    
+    ]);
 
-Route::get('/admin/baza-modeli/edit/{item}', [
-    'uses' => 'BazaModeliController@edit',
-    'as' => 'modele.edit'    
-]);
+    Route::PUT('/baza-modeli/save/{item}', [
+        'uses' => 'BazaModeliController@save',
+        'as' => 'modele.save'    
+    ]);
 
-Route::delete('/admin/baza-modeli/delete/{item}', [
-    'uses' => 'BazaModeliController@delete',
-    'as' => 'modele.delete'    
-]);
+    Route::get('/baza-modeli/edit/{item}', [
+        'uses' => 'BazaModeliController@edit',
+        'as' => 'modele.edit'    
+    ]);
 
-/////        Routing for baza-kolorow-lakieru         //////
+    Route::delete('/baza-modeli/delete/{item}', [
+        'uses' => 'BazaModeliController@delete',
+        'as' => 'modele.delete'    
+    ]);
 
-Route::get('/admin/baza-kolorow-lakieru', [
-    'uses' => 'BazaKolorowLakieruController@show',
-    'as' => 'import.showVarnishColors'    
-]);
+    /////        Routing for baza-kolorow-lakieru         //////
 
-Route::POST('/admin/baza-kolorow-lakieru/upload', [
-    'uses' => 'BazaKolorowLakieruController@upload',
-    'as' => 'koloryLakieru.upload'    
-]);
+    Route::get('/baza-kolorow-lakieru', [
+        'uses' => 'BazaKolorowLakieruController@show',
+        'as' => 'import.showVarnishColors'    
+    ]);
 
-Route::get('/admin/baza-kolorow-lakieru/new', [
-    'uses' => 'BazaKolorowLakieruController@newItem',
-    'as' => 'koloryLakieru.new'    
-]);
+    Route::POST('/baza-kolorow-lakieru/upload', [
+        'uses' => 'BazaKolorowLakieruController@upload',
+        'as' => 'koloryLakieru.upload'    
+    ]);
 
-Route::get('/admin/baza-kolorow-lakieru/insert', [
-    'uses' => 'BazaKolorowLakieruController@insert',
-    'as' => 'koloryLakieru.insert'    
-]);
+    Route::get('/baza-kolorow-lakieru/new', [
+        'uses' => 'BazaKolorowLakieruController@newItem',
+        'as' => 'koloryLakieru.new'    
+    ]);
 
-Route::PUT('/admin/baza-kolorow-lakieru/{item}', [
-    'uses' => 'BazaKolorowLakieruController@update',
-    'as' => 'koloryLakieru.update'    
-]);
+    Route::get('/baza-kolorow-lakieru/insert', [
+        'uses' => 'BazaKolorowLakieruController@insert',
+        'as' => 'koloryLakieru.insert'    
+    ]);
 
-Route::PUT('/admin/baza-kolorow-lakieru/save/{item}', [
-    'uses' => 'BazaKolorowLakieruController@save',
-    'as' => 'koloryLakieru.save'    
-]);
+    Route::PUT('/baza-kolorow-lakieru/{item}', [
+        'uses' => 'BazaKolorowLakieruController@update',
+        'as' => 'koloryLakieru.update'    
+    ]);
 
-Route::get('/admin/baza-kolorow-lakieru/edit/{item}', [
-    'uses' => 'BazaKolorowLakieruController@edit',
-    'as' => 'koloryLakieru.edit'    
-]);
+    Route::PUT('/baza-kolorow-lakieru/save/{item}', [
+        'uses' => 'BazaKolorowLakieruController@save',
+        'as' => 'koloryLakieru.save'    
+    ]);
 
-Route::delete('/admin/baza-kolorow-lakieru/delete/{item}', [
-    'uses' => 'BazaKolorowLakieruController@delete',
-    'as' => 'koloryLakieru.delete'    
-]);
+    Route::get('/baza-kolorow-lakieru/edit/{item}', [
+        'uses' => 'BazaKolorowLakieruController@edit',
+        'as' => 'koloryLakieru.edit'    
+    ]);
 
-/////        Routing for baza-kolorow-tapicerki         //////
+    Route::delete('/baza-kolorow-lakieru/delete/{item}', [
+        'uses' => 'BazaKolorowLakieruController@delete',
+        'as' => 'koloryLakieru.delete'    
+    ]);
 
-Route::get('/admin/baza-kolorow-tapicerki', [
-    'uses' => 'BazaKolorowTapicerkiController@show',
-    'as' => 'import.showUpholsteringColors'    
-]);
+    /////        Routing for baza-kolorow-tapicerki         //////
 
-Route::POST('/admin/baza-kolorow-tapicerki/upload', [
-    'uses' => 'BazaKolorowTapicerkiController@upload',
-    'as' => 'koloryTapicerki.upload'    
-]);
+    Route::get('/baza-kolorow-tapicerki', [
+        'uses' => 'BazaKolorowTapicerkiController@show',
+        'as' => 'import.showUpholsteringColors'    
+    ]);
 
-Route::get('/admin/baza-kolorow-tapicerki/new', [
-    'uses' => 'BazaKolorowTapicerkiController@newItem',
-    'as' => 'koloryTapicerki.new'    
-]);
+    Route::POST('/baza-kolorow-tapicerki/upload', [
+        'uses' => 'BazaKolorowTapicerkiController@upload',
+        'as' => 'koloryTapicerki.upload'    
+    ]);
 
-Route::get('/admin/baza-kolorow-tapicerki/insert', [
-    'uses' => 'BazaKolorowTapicerkiController@insert',
-    'as' => 'koloryTapicerki.insert'    
-]);
+    Route::get('/baza-kolorow-tapicerki/new', [
+        'uses' => 'BazaKolorowTapicerkiController@newItem',
+        'as' => 'koloryTapicerki.new'    
+    ]);
 
-Route::PUT('/admin/baza-kolorow-tapicerki/{item}', [
-    'uses' => 'BazaKolorowTapicerkiController@update',
-    'as' => 'koloryTapicerki.update'    
-]);
+    Route::get('/baza-kolorow-tapicerki/insert', [
+        'uses' => 'BazaKolorowTapicerkiController@insert',
+        'as' => 'koloryTapicerki.insert'    
+    ]);
 
-Route::PUT('/admin/baza-kolorow-tapicerki/save/{item}', [
-    'uses' => 'BazaKolorowTapicerkiController@save',
-    'as' => 'koloryTapicerki.save'    
-]);
+    Route::PUT('/baza-kolorow-tapicerki/{item}', [
+        'uses' => 'BazaKolorowTapicerkiController@update',
+        'as' => 'koloryTapicerki.update'    
+    ]);
 
-Route::get('/admin/baza-kolorow-tapicerki/edit/{item}', [
-    'uses' => 'BazaKolorowTapicerkiController@edit',
-    'as' => 'koloryTapicerki.edit'    
-]);
+    Route::PUT('/baza-kolorow-tapicerki/save/{item}', [
+        'uses' => 'BazaKolorowTapicerkiController@save',
+        'as' => 'koloryTapicerki.save'    
+    ]);
 
-Route::delete('/admin/baza-kolorow-tapicerki/delete/{item}', [
-    'uses' => 'BazaKolorowTapicerkiController@delete',
-    'as' => 'koloryTapicerki.delete'    
-]);
+    Route::get('/baza-kolorow-tapicerki/edit/{item}', [
+        'uses' => 'BazaKolorowTapicerkiController@edit',
+        'as' => 'koloryTapicerki.edit'    
+    ]);
 
-/////        Routing for baza-opcji-wyposazenia         //////
+    Route::delete('/baza-kolorow-tapicerki/delete/{item}', [
+        'uses' => 'BazaKolorowTapicerkiController@delete',
+        'as' => 'koloryTapicerki.delete'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia', [
-    'uses' => 'BazaOpcjiWyposazeniaController@show',
-    'as' => 'import.showEquipmentOptions'    
-]);
+    /////        Routing for baza-opcji-wyposazenia         //////
 
-Route::POST('/admin/baza-opcji-wyposazenia/upload', [
-    'uses' => 'BazaOpcjiWyposazeniaController@upload',
-    'as' => 'opcjeWyposazenia.upload'    
-]);
+    Route::get('/baza-opcji-wyposazenia', [
+        'uses' => 'BazaOpcjiWyposazeniaController@show',
+        'as' => 'import.showEquipmentOptions'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/import', [
-    'uses' => 'BazaOpcjiWyposazeniaController@import',
-    'as' => 'opcjeWyposazenia.import'    
-]);
+    Route::POST('/baza-opcji-wyposazenia/upload', [
+        'uses' => 'BazaOpcjiWyposazeniaController@upload',
+        'as' => 'opcjeWyposazenia.upload'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/new/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@newItem',
-    'as' => 'opcjeWyposazenia.new'    
-]);
+    Route::get('/baza-opcji-wyposazenia/import', [
+        'uses' => 'BazaOpcjiWyposazeniaController@import',
+        'as' => 'opcjeWyposazenia.import'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/insert', [
-    'uses' => 'BazaOpcjiWyposazeniaController@insert',
-    'as' => 'opcjeWyposazenia.insert'    
-]);
+    Route::get('/baza-opcji-wyposazenia/new/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@newItem',
+        'as' => 'opcjeWyposazenia.new'    
+    ]);
 
-Route::PUT('/admin/baza-opcji-wyposazenia/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@update',
-    'as' => 'opcjeWyposazenia.update'    
-]);
+    Route::get('/baza-opcji-wyposazenia/insert', [
+        'uses' => 'BazaOpcjiWyposazeniaController@insert',
+        'as' => 'opcjeWyposazenia.insert'    
+    ]);
 
-Route::PUT('/admin/baza-opcji-wyposazenia/save/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@save',
-    'as' => 'opcjeWyposazenia.save'    
-]);
+    Route::PUT('/baza-opcji-wyposazenia/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@update',
+        'as' => 'opcjeWyposazenia.update'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/details/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@details',
-    'as' => 'opcjeWyposazenia.details'    
-]);
+    Route::PUT('/baza-opcji-wyposazenia/save/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@save',
+        'as' => 'opcjeWyposazenia.save'    
+    ]);
 
-Route::delete('/admin/baza-opcji-wyposazenia/delete/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@delete',
-    'as' => 'opcjeWyposazenia.delete'    
-]);
+    Route::get('/baza-opcji-wyposazenia/details/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@details',
+        'as' => 'opcjeWyposazenia.details'    
+    ]);
 
-Route::get('/admin/baza-opcji-wyposazenia/edit/{item}', [
-    'uses' => 'BazaOpcjiWyposazeniaController@edit',
-    'as' => 'opcjeWyposazenia.edit'    
-]);
+    Route::delete('/baza-opcji-wyposazenia/delete/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@delete',
+        'as' => 'opcjeWyposazenia.delete'    
+    ]);
+
+    Route::get('/baza-opcji-wyposazenia/edit/{item}', [
+        'uses' => 'BazaOpcjiWyposazeniaController@edit',
+        'as' => 'opcjeWyposazenia.edit'    
+    ]);
+});
