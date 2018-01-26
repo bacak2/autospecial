@@ -23,7 +23,7 @@ class HomeController extends Controller
         return view('main', compact('rows', 'total', 'models','colors', 'filters'));
     }
     
-    public function details($id) {
+    public function details($id = 1) {
         
         $home = new Home();
         $item = $home->details($id);
