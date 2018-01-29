@@ -38,7 +38,7 @@ class ImportModel extends Model
             $insertRow->kolor               = $row["kolor"];
             $insertRow->tapicerka           = $row["tapicerka"];
             $insertRow->opcje               = $row["opcje"];
-            $insertRow->opcje_importerskie  = $row["opcje_importerskie"];
+            //$insertRow->opcje_importerskie  = $row["opcje_importerskie"];
             $insertRow->cena_dla_klienta    = $row["cena_dla_klienta"];
             
             $insertRow->save();
@@ -76,7 +76,7 @@ class ImportModel extends Model
             'kolor'               => $row["kolor"],
             'tapicerka'           => $row["tapicerka"],
             'opcje'               => $row["opcje"],
-            'opcje_importerskie'  => $row["opcje_importerskie"],
+            //'opcje_importerskie'  => $row["opcje_importerskie"],
             'cena_dla_klienta'    => $price
             ];
 
