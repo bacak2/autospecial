@@ -82,7 +82,7 @@ class ImportController extends Controller
         $file = $request->file('importFile')->getPathName();
         $destinationPath = 'files/image/';
         $tmp_name = $request->file('importFile')->getClientOriginalName();
-        //if (file_exists($destinationPath.$tmp_name)) exit();
+        //if (file_exists($destinationPath.$tmp_name)) return redirect()->route("import.showPictrues")->withInput($request->all());
         $moved = move_uploaded_file($file, $destinationPath.$tmp_name);
         
         return redirect()->route("import.showPictrues")->with('status', 'Zdjęcie dodano pomyślnie');
