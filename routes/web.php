@@ -83,9 +83,9 @@ Route::prefix('admin')->group(function () {
         'as' => 'dostepneModele.save'    
     ]);
 
-    Route::get('/baza-dostepnych-modeli/edit/{item}', [
-        'uses' => 'BazaDostepnychModeliController@edit',
-        'as' => 'dostepneModele.edit'    
+    Route::get('/baza-dostepnych-modeli/details/{item}', [
+        'uses' => 'BazaDostepnychModeliController@details',
+        'as' => 'dostepneModele.details'    
     ]);
 
     Route::delete('/baza-dostepnych-modeli/delete/{item}', [

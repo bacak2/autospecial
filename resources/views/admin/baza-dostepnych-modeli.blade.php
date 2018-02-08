@@ -19,8 +19,8 @@
             <th>Kolor lakieru</th>
             <th>Kolor tapicerki</th>
             <th>Cena dla klienta</th>
-            <!--h>Edytuj</th>
-            <th>Usuń</th-->
+            <th>Szczegóły</th>
+            <!--th>Usuń</th-->
         </tr>
     </thead>
     <tbody>
@@ -50,9 +50,9 @@
                 @endif
             </span>
         </td>    
-        <td><span class="pull-left">{{ $row->cena_dla_klienta }} </span></td>
-        <!--td><a href="{{ route('dostepneModele.edit', $row) }}" class="btn btn-info">Edytuj</a></td>
-        <td>
+        <td><span class="pull-left">{{ round($row->cena_dla_klienta) }} </span></td>
+        <td><a href="{{ route('dostepneModele.details', $row) }}" class="btn btn-info">Szczegóły</a></td>
+        <!--td>
             {!! Form::model($row, ['route' => ['dostepneModele.delete', $row], 'method' => 'DELETE']) !!}
             <button class="btn btn-danger">Usuń</button>
             {!! Form::close() !!}
