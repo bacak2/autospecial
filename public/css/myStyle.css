@@ -1,0 +1,149 @@
+body{
+    font-family: Arial, Helvetica, sans-serif !important; 
+}
+
+.allcontain{
+	max-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer{
+background-color: #191919;
+color: #fff;
+font-family: "Roboto Light";
+font-size: 12px;
+
+width: 100%;
+height: 30px;
+ 
+}
+.copyright{
+	float:left;
+	padding-left: 10%;
+	padding-top: 5px;
+}
+.atisda{
+	float: right;
+	padding-right: 10%;
+	padding-top: 5px;
+	text-decoration: none;
+}
+.row{
+	padding: 0px;
+	margin: 0px;
+}
+
+#filters{
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+
+.item-margin-bottom{
+	margin-bottom: 20px !important;
+}
+
+.item-description li {
+	list-style: none;
+}
+
+.item-details-description li {
+	list-style: none;
+}
+
+.item-description li:last-child {
+	font-size: 20px;
+	text-align: right;
+}
+
+.details-description-head {
+	font-size: 20px;
+	text-align: right;
+}
+
+.item-img-div{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contact-in-filters{
+	margin-top: 15px;
+}
+
+.active  a{
+	margin-left: 5px;
+}
+
+@media screen and (min-width: 767px) {
+    .navbar-to-right, .navbar-socials {
+        float: right !important;
+    }
+    
+    .item-details-min-img{
+	width: 700px;
+	height: auto;
+    }
+    
+    .details-img-wrapper{
+        min-width: 700px;
+    }
+    
+
+    .details-description{
+            display: inline-block;
+            width:600px;
+    }
+
+    .img-wrapper{
+        min-width: 400px;
+    } 
+ 
+    .item-min-img{
+            position: static;
+            top: 0;
+            width:400px;
+            height: auto;
+    } 
+    
+    .item-description{
+            display: inline-block;
+            width:400px;
+    }    
+}
+
+@media screen and (max-width: 767px) {
+
+    
+    .navbar-socials li{
+        float: left;
+    }
+
+    .item-details-min-img{
+	max-width: 100%;
+	height: auto;
+    } 
+
+    .details-img-wrapper{
+        max-width: 100%;
+    }
+
+    .details-description{
+        max-width: 100%;
+    }
+
+    .img-wrapper{
+        max-width: 100%;
+    } 
+    
+    .item-min-img{
+            position: static;
+            top: 0;
+            max-width: 100%;
+            height: auto;
+    } 
+    
+    .item-description{
+            display: inline-block;
+            max-width: 100%;
+    }    
+}

@@ -1,0 +1,48 @@
+.allcontain{
+	max-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer{
+background-color: #191919;
+color: #fff;
+font-family: "Roboto Light";
+font-size: 12px;
+
+width: 100%;
+height: 30px;
+ 
+}
+.copyright{
+	float:left;
+	padding-left: 10%;
+	padding-top: 5px;
+}
+.atisda{
+	float: right;
+	padding-right: 10%;
+	padding-top: 5px;
+	text-decoration: none;
+}
+.row{
+	padding: 0px;
+	margin: 0px;
+}
+
+.item-min-img{
+	width:400px;
+	height: auto;
+}
+
+#filters{
+	padding-right: 30px;
+}
+
+.item-description{
+	display: inline-block;
+}
+
+.list-group-item{
+	margin-bottom: 20px;
+}
