@@ -81,8 +81,12 @@ class ImportModel extends Model
             ];
 
         }
+
+        DB::beginTransaction();
         BazaDostepnychModeli::truncate();
         BazaDostepnychModeli::insert($dataSet);
+        DB::commit();
+
 
     }
     
@@ -104,8 +108,11 @@ class ImportModel extends Model
                 'kolor_lakieru_decoded'   => $row[1],
             ];
         }
+
+        DB::beginTransaction();
         BazaKolorowLakieru::truncate();
         BazaKolorowLakieru::insert($dataSet);
+        DB::commit();
         
     }
     
@@ -127,9 +134,11 @@ class ImportModel extends Model
                 'kolor_tapicerki_decoded'   => $row[1],
             ];
         }
+
+        DB::beginTransaction();
         BazaKolorowTapicerki::truncate();
         BazaKolorowTapicerki::insert($dataSet);
-        
+        DB::commit();
     }  
     
     /*
@@ -153,7 +162,6 @@ class ImportModel extends Model
             ];
         }
 
-        //BazaOpcjiWyposazenia::truncate();
         BazaOpcjiWyposazenia::insert($dataSet);
         
     }      
@@ -179,9 +187,11 @@ class ImportModel extends Model
                 'model_code3'     => $model_code3
             ];
         }
-        
+
+        DB::beginTransaction();
         BazaModeli::truncate();
         BazaModeli::insert($dataSet);
+        DB::commit();
         
     }     
     

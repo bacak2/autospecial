@@ -11,30 +11,30 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::GET('/', 'HomeController@index')->name('home');
 
-Route::get('/details/{item?}', [
+Route::GET('/details/{item?}', [
     'uses' => 'HomeController@details',
     'as' => 'home.details'    
 ])->where('item', '[0-9]+');
 
 Auth::routes();
 
-Route::get('/admin/import', [
+Route::GET('/admin/import', [
     'uses' => 'ImportController@index',
     'as' => 'import.index'    
 ]);
 
-Route::get('/admin', function () {
+Route::GET('/admin', function () {
     return redirect()->route("import.show");
 });
 
-Route::get('/admin/baza-opcji-wyposazenia', [
+Route::GET('/admin/baza-opcji-wyposazenia', [
     'uses' => 'ImportController@showEquipmentOptions',
     'as' => 'import.showEquipmentOptions'    
 ]);
 
-Route::get('/admin/zdjęcia-modeli', [
+Route::GET('/admin/zdjęcia-modeli', [
     'uses' => 'ImportController@showPictrues',
     'as' => 'import.showPictrues'    
 ]);
@@ -48,7 +48,7 @@ Route::POST('/admin/bzdjęcia-modeli/upload', [
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('/baza-dostepnych-modeli', [
+    Route::GET('/baza-dostepnych-modeli', [
         'uses' => 'BazaDostepnychModeliController@show',
         'as' => 'import.show'    
     ]);
@@ -58,17 +58,17 @@ Route::prefix('admin')->group(function () {
         'as' => 'dostepneModele.upload'    
     ]);
 
-    Route::get('/baza-dostepnych-modeli/import', [
+    Route::GET('/baza-dostepnych-modeli/import', [
         'uses' => 'BazaDostepnychModeliController@import',
         'as' => 'dostepneModele.import'    
     ]);
 
-    Route::get('/baza-dostepnych-modeli/new', [
+    Route::GET('/baza-dostepnych-modeli/new', [
         'uses' => 'BazaDostepnychModeliController@newItem',
         'as' => 'dostepneModele.new'    
     ]);
 
-    Route::get('/baza-dostepnych-modeli/insert', [
+    Route::GET('/baza-dostepnych-modeli/insert', [
         'uses' => 'BazaDostepnychModeliController@insert',
         'as' => 'dostepneModele.insert'    
     ]);
@@ -83,195 +83,195 @@ Route::prefix('admin')->group(function () {
         'as' => 'dostepneModele.save'    
     ]);
 
-    Route::get('/baza-dostepnych-modeli/details/{item}', [
+    Route::GET('/baza-dostepnych-modeli/details/{item}', [
         'uses' => 'BazaDostepnychModeliController@details',
         'as' => 'dostepneModele.details'    
     ]);
 
-    Route::delete('/baza-dostepnych-modeli/delete/{item}', [
+    Route::DELETE('/baza-dostepnych-modeli/delete/{item}', [
         'uses' => 'BazaDostepnychModeliController@delete',
-        'as' => 'dostepneModele.delete'    
+        'as' => 'dostepneModele.delete'
     ]);
 
     /////        Routing for baza-modeli        //////
 
-    Route::get('/baza-modeli', [
+    Route::GET('/baza-modeli', [
         'uses' => 'BazaModeliController@show',
-        'as' => 'import.showModels'    
+        'as' => 'import.showModels'
     ]);
 
     Route::POST('/baza-modeli/upload', [
         'uses' => 'BazaModeliController@upload',
-        'as' => 'modele.upload'    
+        'as' => 'modele.upload'
     ]);
 
-    Route::get('/baza-modeli/import', [
+    Route::GET('/baza-modeli/import', [
         'uses' => 'BazaModeliController@import',
-        'as' => 'modele.import'    
+        'as' => 'modele.import'
     ]);
 
-    Route::get('/baza-modeli/new', [
+    Route::GET('/baza-modeli/new', [
         'uses' => 'BazaModeliController@newItem',
-        'as' => 'modele.new'    
+        'as' => 'modele.new'
     ]);
 
-    Route::get('/baza-modeli/insert', [
+    Route::GET('/baza-modeli/insert', [
         'uses' => 'BazaModeliController@insert',
-        'as' => 'modele.insert'    
+        'as' => 'modele.insert'
     ]);
 
     Route::PUT('/baza-modeli/{item}', [
         'uses' => 'BazaModeliController@update',
-        'as' => 'modele.update'    
+        'as' => 'modele.update'
     ]);
 
     Route::PUT('/baza-modeli/save/{item}', [
         'uses' => 'BazaModeliController@save',
-        'as' => 'modele.save'    
+        'as' => 'modele.save'
     ]);
 
-    Route::get('/baza-modeli/edit/{item}', [
+    Route::GET('/baza-modeli/edit/{item}', [
         'uses' => 'BazaModeliController@edit',
-        'as' => 'modele.edit'    
+        'as' => 'modele.edit'
     ]);
 
     Route::delete('/baza-modeli/delete/{item}', [
         'uses' => 'BazaModeliController@delete',
-        'as' => 'modele.delete'    
+        'as' => 'modele.delete'
     ]);
 
     /////        Routing for baza-kolorow-lakieru         //////
 
-    Route::get('/baza-kolorow-lakieru', [
+    Route::GET('/baza-kolorow-lakieru', [
         'uses' => 'BazaKolorowLakieruController@show',
-        'as' => 'import.showVarnishColors'    
+        'as' => 'import.showVarnishColors'
     ]);
 
     Route::POST('/baza-kolorow-lakieru/upload', [
         'uses' => 'BazaKolorowLakieruController@upload',
-        'as' => 'koloryLakieru.upload'    
+        'as' => 'koloryLakieru.upload'
     ]);
 
-    Route::get('/baza-kolorow-lakieru/new', [
+    Route::GET('/baza-kolorow-lakieru/new', [
         'uses' => 'BazaKolorowLakieruController@newItem',
-        'as' => 'koloryLakieru.new'    
+        'as' => 'koloryLakieru.new'
     ]);
 
-    Route::get('/baza-kolorow-lakieru/insert', [
+    Route::GET('/baza-kolorow-lakieru/insert', [
         'uses' => 'BazaKolorowLakieruController@insert',
-        'as' => 'koloryLakieru.insert'    
+        'as' => 'koloryLakieru.insert'
     ]);
 
     Route::PUT('/baza-kolorow-lakieru/{item}', [
         'uses' => 'BazaKolorowLakieruController@update',
-        'as' => 'koloryLakieru.update'    
+        'as' => 'koloryLakieru.update'
     ]);
 
     Route::PUT('/baza-kolorow-lakieru/save/{item}', [
         'uses' => 'BazaKolorowLakieruController@save',
-        'as' => 'koloryLakieru.save'    
+        'as' => 'koloryLakieru.save'
     ]);
 
-    Route::get('/baza-kolorow-lakieru/edit/{item}', [
+    Route::GET('/baza-kolorow-lakieru/edit/{item}', [
         'uses' => 'BazaKolorowLakieruController@edit',
-        'as' => 'koloryLakieru.edit'    
+        'as' => 'koloryLakieru.edit'
     ]);
 
     Route::delete('/baza-kolorow-lakieru/delete/{item}', [
         'uses' => 'BazaKolorowLakieruController@delete',
-        'as' => 'koloryLakieru.delete'    
+        'as' => 'koloryLakieru.delete'
     ]);
 
     /////        Routing for baza-kolorow-tapicerki         //////
 
-    Route::get('/baza-kolorow-tapicerki', [
+    Route::GET('/baza-kolorow-tapicerki', [
         'uses' => 'BazaKolorowTapicerkiController@show',
-        'as' => 'import.showUpholsteringColors'    
+        'as' => 'import.showUpholsteringColors'
     ]);
 
     Route::POST('/baza-kolorow-tapicerki/upload', [
         'uses' => 'BazaKolorowTapicerkiController@upload',
-        'as' => 'koloryTapicerki.upload'    
+        'as' => 'koloryTapicerki.upload'
     ]);
 
-    Route::get('/baza-kolorow-tapicerki/new', [
+    Route::GET('/baza-kolorow-tapicerki/new', [
         'uses' => 'BazaKolorowTapicerkiController@newItem',
-        'as' => 'koloryTapicerki.new'    
+        'as' => 'koloryTapicerki.new'
     ]);
 
-    Route::get('/baza-kolorow-tapicerki/insert', [
+    Route::GET('/baza-kolorow-tapicerki/insert', [
         'uses' => 'BazaKolorowTapicerkiController@insert',
-        'as' => 'koloryTapicerki.insert'    
+        'as' => 'koloryTapicerki.insert'
     ]);
 
     Route::PUT('/baza-kolorow-tapicerki/{item}', [
         'uses' => 'BazaKolorowTapicerkiController@update',
-        'as' => 'koloryTapicerki.update'    
+        'as' => 'koloryTapicerki.update'
     ]);
 
     Route::PUT('/baza-kolorow-tapicerki/save/{item}', [
         'uses' => 'BazaKolorowTapicerkiController@save',
-        'as' => 'koloryTapicerki.save'    
+        'as' => 'koloryTapicerki.save'
     ]);
 
-    Route::get('/baza-kolorow-tapicerki/edit/{item}', [
+    Route::GET('/baza-kolorow-tapicerki/edit/{item}', [
         'uses' => 'BazaKolorowTapicerkiController@edit',
-        'as' => 'koloryTapicerki.edit'    
+        'as' => 'koloryTapicerki.edit'
     ]);
 
     Route::delete('/baza-kolorow-tapicerki/delete/{item}', [
         'uses' => 'BazaKolorowTapicerkiController@delete',
-        'as' => 'koloryTapicerki.delete'    
+        'as' => 'koloryTapicerki.delete'
     ]);
 
     /////        Routing for baza-opcji-wyposazenia         //////
 
-    Route::get('/baza-opcji-wyposazenia', [
+    Route::GET('/baza-opcji-wyposazenia', [
         'uses' => 'BazaOpcjiWyposazeniaController@show',
-        'as' => 'import.showEquipmentOptions'    
+        'as' => 'import.showEquipmentOptions'
     ]);
 
     Route::POST('/baza-opcji-wyposazenia/upload', [
         'uses' => 'BazaOpcjiWyposazeniaController@upload',
-        'as' => 'opcjeWyposazenia.upload'    
+        'as' => 'opcjeWyposazenia.upload'
     ]);
 
-    Route::get('/baza-opcji-wyposazenia/import', [
+    Route::GET('/baza-opcji-wyposazenia/import', [
         'uses' => 'BazaOpcjiWyposazeniaController@import',
-        'as' => 'opcjeWyposazenia.import'    
+        'as' => 'opcjeWyposazenia.import'
     ]);
 
-    Route::get('/baza-opcji-wyposazenia/new/{item}', [
+    Route::GET('/baza-opcji-wyposazenia/new/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@newItem',
-        'as' => 'opcjeWyposazenia.new'    
+        'as' => 'opcjeWyposazenia.new'
     ]);
 
-    Route::get('/baza-opcji-wyposazenia/insert', [
+    Route::GET('/baza-opcji-wyposazenia/insert', [
         'uses' => 'BazaOpcjiWyposazeniaController@insert',
-        'as' => 'opcjeWyposazenia.insert'    
+        'as' => 'opcjeWyposazenia.insert'
     ]);
 
     Route::PUT('/baza-opcji-wyposazenia/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@update',
-        'as' => 'opcjeWyposazenia.update'    
+        'as' => 'opcjeWyposazenia.update'
     ]);
 
     Route::PUT('/baza-opcji-wyposazenia/save/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@save',
-        'as' => 'opcjeWyposazenia.save'    
+        'as' => 'opcjeWyposazenia.save'
     ]);
 
-    Route::get('/baza-opcji-wyposazenia/details/{item}', [
+    Route::GET('/baza-opcji-wyposazenia/details/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@details',
-        'as' => 'opcjeWyposazenia.details'    
+        'as' => 'opcjeWyposazenia.details'
     ]);
 
     Route::delete('/baza-opcji-wyposazenia/delete/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@delete',
-        'as' => 'opcjeWyposazenia.delete'    
+        'as' => 'opcjeWyposazenia.delete'
     ]);
 
-    Route::get('/baza-opcji-wyposazenia/edit/{item}', [
+    Route::GET('/baza-opcji-wyposazenia/edit/{item}', [
         'uses' => 'BazaOpcjiWyposazeniaController@edit',
         'as' => 'opcjeWyposazenia.edit'    
     ]);
