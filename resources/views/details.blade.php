@@ -8,7 +8,12 @@
             <div class="list-group">
  
                 <div class="list-group-item list-group-item-action flex-column align-items-start item-margin-bottom">
-                    <div class="item-img-div details-img-wrapper"><img class="item-details-min-img" src="{{ asset('files/image/'.$item->model_code3.'_'.$item->kolor.'.jpg') }}" alt=""></div>
+                    <div class="item-img-div details-img-wrapper">
+                        <img class="item-details-min-img" src="{{ asset('files/image/'.$item->model_code3.'_'.$item->kolor.'.jpg') }}" alt="">
+                        @if (file_exists('files/image/'.$item->model_code3.'_'.$item->kolor.'.jpg'))
+                            <span>Pojazd prezentowany na zdjęciu może różnić się od opisanego w zakresie wyposażenia.</span>
+                        @endif
+                    </div>
                     <div class="item-description details-description">
                         <ul>
                             <li><h3> {{ $item->model_decoded }} </h3></li>
@@ -45,6 +50,5 @@
             {!! link_to(URL::previous(), 'Powrót', ['class'=>'btn btn-default']) !!}
 
     </div>
-
 @endsection
 

@@ -19,12 +19,13 @@ class BazaDostepnychModeliController extends Controller
 
     public function show() {
         
-        $rows = BazaDostepnychModeli::leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
+        $rows = BazaDostepnychModeli::select('baza_dostepnych_modelis.id', 'komisja', 'rok_modelowy', 'kolor', 'tapicerka', 'opcje', 'opcje_importerskie', 'cena_dla_klienta', 'model_code', 'model_decoded', 'baza_modelis.model_code3', 'kolor_lakieru_code', 'kolor_lakieru_decoded', 'kolor_tapicerki_code', 'kolor_tapicerki_decoded')->distinct()
+                ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
                 ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
                 ->leftJoin('baza_kolorow_tapicerkis', 'baza_dostepnych_modelis.tapicerka', '=', 'baza_kolorow_tapicerkis.kolor_tapicerki_code')
                 ->leftJoin('baza_opcji_wyposazenias', 'baza_dostepnych_modelis.opcje', '=', 'baza_opcji_wyposazenias.opcja_wyposazenia_code')
                 ->orderBy('baza_dostepnych_modelis.id')
-                ->addSelect('*','baza_dostepnych_modelis.id')
+                //->addSelect('*','baza_dostepnych_modelis.id')
                 ->paginate(10);
         return view('admin.baza-dostepnych-modeli', compact('rows'));
     }

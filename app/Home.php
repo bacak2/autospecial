@@ -20,6 +20,7 @@ class Home extends Model
         if ($filters->has('model') && $filters->model === "3G2") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "3G5%");
         else if ($filters->has('model') && $filters->model === "6C1") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "AW1%");
         else if ($filters->has('model') && $filters->model === "AD1") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "BW2%");
+        else if ($filters->has('model') && $filters->model === "BQ1") $rows->where('model', 'LIKE', $filters->get('model')."%")->orWhere('model', 'LIKE', "AN1%");
         else if ($filters->has('model') && $filters->model !== "0") $rows->where('model', 'LIKE', $filters->get('model')."%");
 
 //nie pokazuj na stronie frontowej samochodów bez nazwy nieznalezionej w bazie
@@ -30,7 +31,7 @@ class Home extends Model
         else if ($filters->has('sortuj') && $filters->sortuj === "nameDesc") $rows->orderBy('model_decoded', 'desc'); 
         else $rows->orderBy('baza_dostepnych_modelis.id');
         
-        $rows =$rows->paginate(5);
+        $rows =$rows->distinct()->paginate(5);
         return $rows;
 }
 
@@ -42,7 +43,8 @@ class Home extends Model
             if ($key == "3G5") unset($models['3G5']);
             if ($key == "AW1") unset($models['AW1']);
             if ($key == "BW2") unset($models['BW2']);
-            if ($key != "122" && $key != "3G2" && $key != "3G5" && $key != "6C1" && $key != "AW1" && $key != "AD1" && $key != "BW2" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
+            if ($key == "AN1") unset($models['AN1']);
+            if ($key != "AN1" && $key != "122" && $key != "3G2" && $key != "3G5" && $key != "6C1" && $key != "AW1" && $key != "AD1" && $key != "BW2" && $key != "AM1" && $key != "BQ1" && $key != "BV5") $models->prepend(substr($value, 0, strpos($value, ' ')), $key);
         
         }
 
@@ -55,7 +57,6 @@ class Home extends Model
                 ->prepend("Golf", "BQ1");        
      
         $models->prepend('-- Wybierz --', 0);
-        
         return $models;
     }
     
