@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/resources/views/admin/edit-kolor-lakieru.blade.php</file>
             <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/app/Home.php</file>
             <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/app/Http/Controllers/BazaDostepnychModeliController.php</file>
+<<<<<<< HEAD
+=======
+            <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/resources/views/admin/baza-dostepnych-modeli.blade.php</file>
+            <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/resources/views/admin/insert-dostepny-model.blade.php</file>
+>>>>>>> 540a85bb65bed5f981cb88fac273ea9db9656469
             <file>file:/opt/lampp/htdocs/AutospecialOdReki/autospecial/routes/web.php</file>
         </group>
     </open-files>
