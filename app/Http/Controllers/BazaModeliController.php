@@ -7,6 +7,7 @@ use App\BazaModeli;
 use App\Http\Requests\Modele;
 use App\ImportModel;
 use App\Wyposazenie_standardowe;
+use App\BazaOpcjiWyposazenia;
 
 class BazaModeliController extends Controller
 {
@@ -52,25 +53,20 @@ class BazaModeliController extends Controller
         $selected = Wyposazenie_standardowe::select('wyposazenie_standardowes.id_opcja_wyposazenia', 'baza_opcji_wyposazenias.opcja_wyposazenia_code', 'baza_opcji_wyposazenias.opcja_wyposazenia_decoded')
             ->leftJoin('baza_opcji_wyposazenias', 'id_opcja_wyposazenia', '=', 'baza_opcji_wyposazenias.id')
             ->where('wyposazenie_standardowes.model_code', $item->model_code)
-            //->toSql();
             ->get();
         $selected = json_encode($selected);
-//echo($selected);
-        // wszystkie, oprócz już wybranych
-        $allOptions = BazaModeli::select('baza_opcji_wyposazenias.id', 'baza_opcji_wyposazenias.opcja_wyposazenia_code', 'baza_opcji_wyposazenias.opcja_wyposazenia_decoded')
-            ->leftJoin('baza_opcji_wyposazenias', 'baza_opcji_wyposazenias.model_code3', '=', 'baza_modelis.model_code3')
-            ->where('baza_modelis.model_code', $item->model_code)
-            //baza_opcji_wyposazenias.id    nie jest w  wyposazenie_standardowes.id_opcja_wyposazenia
-            ->whereNotIn('baza_opcji_wyposazenias.id', function($query) {
-                $query->select('wyposazenie_standardowes.id_opcja_wyposazenia')
-                    ->from('wyposazenie_standardowes');
-            })
-            //->toSql();
-            ->get();
-        $allOptions = json_encode($allOptions);
-//echo($allOptions);
 
-//exit();
+        // wszystkie, oprócz już wybranych
+        $allOptions = BazaOpcjiWyposazenia::select('baza_opcji_wyposazenias.id', 'baza_opcji_wyposazenias.opcja_wyposazenia_code', 'baza_opcji_wyposazenias.opcja_wyposazenia_decoded')
+            ->leftJoin('baza_modelis', 'baza_opcji_wyposazenias.model_code3', '=', 'baza_modelis.model_code3')
+            ->where('baza_modelis.model_code', $item->model_code)
+            ->whereNotIn('baza_opcji_wyposazenias.id', function($query) use ($item) {
+                $query->select('wyposazenie_standardowes.id_opcja_wyposazenia')
+                    ->from('wyposazenie_standardowes')->where('wyposazenie_standardowes.model_code', $item->model_code);
+            })
+            ->get();
+
+        $allOptions = json_encode($allOptions);
 
         return view('admin.edit-model', compact('item', 'allOptions', 'selected'));
 
@@ -89,39 +85,31 @@ class BazaModeliController extends Controller
     }
     
     public function update(Modele $request, BazaModeli $item) {
-        dd($request->standardOptions);
-        $standardOptions = json_decode($request->standardOptions);
-dd($standardOptions);
-        /*zapis kodu z formularza
+
         $model_code3 = substr($request->model_code, 0, 3);
         $request->query->add(['model_code3' => $model_code3]);
         $item->update($request->all());
-        */
-        foreach($standardOptions as $option){
-            $dataSet[] = [
-                'id_opcja_wyposazenia' => $option->id,
-                'model_code' => $request->model_code,
-            ];
-        }
-        Wyposazenie_standardowe::insert($dataSet);
+
         return redirect()->route("import.showModels");
     }
     
     public function updateCodes(Request $request){
 
+        Wyposazenie_standardowe::where('model_code', $request->model_code)->delete();
+
         $standardOptions = $request->selected;
-        //$standardOptions = json_decode($request->selected);
-
-            $dataSet[] = [
-                'id_opcja_wyposazenia' => $standardOptions[0]['id_opcja_wyposazenia'] ?? $standardOptions[0]['id'],
-                'model_code' => $request->model_code,
-            ];
-
-
-        Wyposazenie_standardowe::insert($dataSet);
+        if($standardOptions != 0) {
+            foreach ($standardOptions as $standardOption) {
+                $dataSet[] = [
+                    'id_opcja_wyposazenia' => $standardOption['id_opcja_wyposazenia'] ?? $standardOption['id'],
+                    'model_code' => $request->model_code,
+                ];
+            }
+            Wyposazenie_standardowe::insert($dataSet);
+        }
 
         return response()->json([
-            'dataSet' => $dataSet,
+            'res' => 'true',
         ]);
     }
     

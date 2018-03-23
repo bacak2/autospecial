@@ -25,9 +25,8 @@
 {!! link_to(URL::previous(), 'Anuluj', ['class'=>'btn btn-default']) !!}
 
 {!! Form::close() !!}
-<br>
-<br>
-<br>
+
+<h2 style="margin-top: 80px">Wyposażenie standardowe</h2>
 
 <div ng-app="OptionsList" ng-controller="myCtrl">
     <!--select ng-options="option as option.opcja_wyposazenia_decoded for option in Options track by option.id" ng-model="selected"></select-->
@@ -113,6 +112,7 @@
             },
             success: function(data) {
                 console.log(data);
+                location.href = "{{URL::previous()}}";
             },
             error: function() {
                 console.log("Error in connection with controller");

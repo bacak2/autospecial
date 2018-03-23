@@ -26,17 +26,31 @@
                         </ul>
                     </div>
                     
-                <div class="col-md-1"></div>    
-                <h2>Wyposażenie dodatkowe:</h2>               
-                <div class="row">
-                    <div class="col-md-2"></div> 
+                <div class="col-md-1"></div>
+                    @if($selectedOptions->count() > 0)
+                        <h2>Wyposażenie standardowe:</h2>
+                        <div class="row">
+                            <div class="col-md-2"></div>
 
-                    <ul class="col-md-10">
-                        @foreach ($wyposazenieArray as $opcja)
-                        <li> {{ $opcja }} </li>
-                        @endforeach
-                    </ul>
-                    </div>  
+                            <ul class="col-md-10">
+                                @foreach ($selectedOptions as $opcja)
+                                    <li> {{ $opcja->opcja_wyposazenia_decoded }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if($otherOptions->count() > 0)
+                        <h2>Wyposażenie dodatkowe:</h2>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+
+                            <ul class="col-md-10">
+                                @foreach ($otherOptions as $opcja)
+                                <li> {{ $opcja->opcja_wyposazenia_decoded }} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 
               

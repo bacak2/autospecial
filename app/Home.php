@@ -69,7 +69,7 @@ class Home extends Model
     }
     
     public function details($id) {
-                $item = BazaDostepnychModeli::select('baza_dostepnych_modelis.id','komisja', 'model', 'rok_modelowy', 'kolor', 'tapicerka', 'opcje', 'cena_dla_klienta', 'model_code', 'model_decoded', 'model_code3', 'kolor_lakieru_code', 'kolor_lakieru_decoded', 'kolor_tapicerki_code', 'kolor_tapicerki_decoded')
+                $item = BazaDostepnychModeli::select('baza_dostepnych_modelis.id','komisja', 'model', 'rok_modelowy', 'kolor', 'tapicerka', 'cena_dla_klienta', 'model_code', 'model_decoded', 'model_code3', 'kolor_lakieru_code', 'kolor_lakieru_decoded', 'kolor_tapicerki_code', 'kolor_tapicerki_decoded')
                 ->where('baza_dostepnych_modelis.id', $id)
                 ->leftJoin('baza_modelis', 'baza_dostepnych_modelis.model', '=', 'baza_modelis.model_code')
                 ->leftJoin('baza_kolorow_lakierus', 'baza_dostepnych_modelis.kolor', '=', 'baza_kolorow_lakierus.kolor_lakieru_code')
@@ -77,5 +77,31 @@ class Home extends Model
                 ->first();
         return $item;            
     }
- 
+
+
+    public function selectedOptions($model_code) {
+        
+        $selected = Wyposazenie_standardowe::select('wyposazenie_standardowes.id_opcja_wyposazenia', 'baza_opcji_wyposazenias.opcja_wyposazenia_code', 'baza_opcji_wyposazenias.opcja_wyposazenia_decoded')
+            ->leftJoin('baza_opcji_wyposazenias', 'id_opcja_wyposazenia', '=', 'baza_opcji_wyposazenias.id')
+            ->where('wyposazenie_standardowes.model_code', $model_code)
+            ->get();
+        
+        return $selected;
+    }
+
+    public function otherOptions($model_code) {
+        
+        $otherOptions = BazaOpcjiWyposazenia::select('baza_opcji_wyposazenias.id', 'baza_opcji_wyposazenias.opcja_wyposazenia_code', 'baza_opcji_wyposazenias.opcja_wyposazenia_decoded')
+            ->leftJoin('baza_modelis', 'baza_opcji_wyposazenias.model_code3', '=', 'baza_modelis.model_code3')
+            ->where('baza_modelis.model_code', $model_code)
+            //baza_opcji_wyposazenias.id    nie jest w  wyposazenie_standardowes.id_opcja_wyposazenia
+            ->whereNotIn('baza_opcji_wyposazenias.id', function($query) use ($model_code) {
+                $query->select('wyposazenie_standardowes.id_opcja_wyposazenia')
+                    ->from('wyposazenie_standardowes')->where('wyposazenie_standardowes.model_code', $model_code);
+            })
+            ->get();
+
+        return $otherOptions;
+    }
+    
 }
