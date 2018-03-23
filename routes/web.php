@@ -125,6 +125,11 @@ Route::prefix('admin')->group(function () {
         'as' => 'modele.update'
     ]);
 
+    Route::GET('/baza-modeli/updateCodes', [
+        'uses' => 'BazaModeliController@updateCodes',
+        'as' => 'modele.updateCodes'
+    ]);
+    
     Route::PUT('/baza-modeli/save/{item}', [
         'uses' => 'BazaModeliController@save',
         'as' => 'modele.save'

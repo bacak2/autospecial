@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Form::model($item, ['route' => ['modele.update', $item], 'method' => 'PUT']) !!}
-{!! Form::hidden('standardOptions', $rows) !!}
+{!! Form::hidden('standardOptions', $selected, ['id' => 'standardOptions']) !!}
 <div class="form-group">
     
     {!! Form::label('model_code', 'Kod') !!}
@@ -25,6 +25,9 @@
 {!! link_to(URL::previous(), 'Anuluj', ['class'=>'btn btn-default']) !!}
 
 {!! Form::close() !!}
+<br>
+<br>
+<br>
 
 <div ng-app="OptionsList" ng-controller="myCtrl">
     <!--select ng-options="option as option.opcja_wyposazenia_decoded for option in Options track by option.id" ng-model="selected"></select-->
@@ -32,6 +35,7 @@
 
 
     <button ng-click="addItem($index)" class="btn btn-success">Dodaj</button>
+    <button ng-click="saveItems()" class="btn btn-primary">Zapisz</button>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
@@ -53,8 +57,14 @@
 </div>
 
 <script>
-    optionsJson = '<?php echo $rows ?>';
+    model_code = '<?php echo $item->model_code ?>';
+
+    selectedOptionsJson = '<?php echo $selected ?>';
+    selectedOpt = JSON.parse(selectedOptionsJson);
+
+    optionsJson = '<?php echo $allOptions ?>';
     opt = JSON.parse(optionsJson);
+
     var form = document.getElementById("id-form");
     function submitForm(){
         form[0].submit();
@@ -77,13 +87,38 @@
             }
 
         }
+
+        $scope.saveItems = function () {
+                save(selectedOpt);
+            }
+
         $scope.removeItem = function (object, x) {
             $scope.myObj.splice(x, 1);
             $scope.Options.push(object);
         }
         $scope.Options = opt
 
-        $scope.myObj = []
+        $scope.myObj = selectedOpt
     });
+
+    function save(selectedOpt) {
+        console.log(selectedOpt);
+        $.ajax({
+            type: "GET",
+            url: `/admin/baza-modeli/updateCodes`,
+            dataType : 'json',
+            data: {
+                selected: selectedOpt,
+                model_code: model_code
+            },
+            success: function(data) {
+                console.log(data);
+            },
+            error: function() {
+                console.log("Error in connection with controller");
+            },
+        });
+    }
+
 </script>
 @endsection
