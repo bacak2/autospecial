@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Form::model($item, ['route' => ['modele.update', $item], 'method' => 'PUT']) !!}
-{!! Form::hidden('standardOptions', $selected, ['id' => 'standardOptions']) !!}
+
 <div class="form-group">
     
     {!! Form::label('model_code', 'Kod') !!}
@@ -30,7 +30,7 @@
 
 <div ng-app="OptionsList" ng-controller="myCtrl">
     <!--select ng-options="option as option.opcja_wyposazenia_decoded for option in Options track by option.id" ng-model="selected"></select-->
-    <select ng-options="option as option.opcja_wyposazenia_decoded for option in Options" ng-model="selected"></select>
+    <select style="max-width: 750px" ng-options="option as option.opcja_wyposazenia_decoded for option in Options" ng-model="selected"></select>
 
 
     <button ng-click="addItem($index)" class="btn btn-success">Dodaj</button>

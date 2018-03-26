@@ -36,4 +36,24 @@ class HomeController extends Controller
         return view('details', compact('item', 'selectedOptions', 'otherOptions'));
         
     }
+
+    public function detailsOld($id = 1) {
+
+        $home = new Home();
+        $item = $home->detailsOld($id);
+
+        $wyposazenie = $item->opcje;
+        $wyposazenie = explode(' ', $wyposazenie);
+
+        $wyposazenieArray = array();
+
+        foreach($wyposazenie as $row) {
+
+            $whereStatment = ['model_code3' => $item['model_code3'], 'opcja_wyposazenia_code' => $row];
+            $it = BazaOpcjiWyposazenia::where($whereStatment)->first();
+            if($it['opcja_wyposazenia_decoded'] !== NULL) array_push($wyposazenieArray, $it['opcja_wyposazenia_decoded']);
+        }
+
+        return view('detailsOld', compact('item', 'wyposazenieArray'));
+    }
 }

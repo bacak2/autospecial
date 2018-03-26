@@ -14,8 +14,13 @@
 Route::GET('/', 'HomeController@index')->name('home');
 
 Route::GET('/details/{item?}', [
-    'uses' => 'HomeController@details',
+    'uses' => 'HomeController@detailsOld',
     'as' => 'home.details'    
+])->where('item', '[0-9]+');
+
+Route::GET('/details/{item?}/new', [
+    'uses' => 'HomeController@details',
+    'as' => 'home.detailsNew'
 ])->where('item', '[0-9]+');
 
 Auth::routes();

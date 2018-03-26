@@ -54,6 +54,12 @@ class BazaModeliController extends Controller
             ->leftJoin('baza_opcji_wyposazenias', 'id_opcja_wyposazenia', '=', 'baza_opcji_wyposazenias.id')
             ->where('wyposazenie_standardowes.model_code', $item->model_code)
             ->get();
+
+        foreach($selected as $option) {
+            $option->opcja_wyposazenia_decoded = str_replace(array("\r\n", "\n", "\r", '"'), ' ', $option->opcja_wyposazenia_decoded);
+            $option->opcja_wyposazenia_decoded = filter_var($option->opcja_wyposazenia_decoded, FILTER_SANITIZE_STRING);
+        }
+
         $selected = json_encode($selected);
 
         // wszystkie, oprócz już wybranych
@@ -65,6 +71,11 @@ class BazaModeliController extends Controller
                     ->from('wyposazenie_standardowes')->where('wyposazenie_standardowes.model_code', $item->model_code);
             })
             ->get();
+
+        foreach($allOptions as $option) {
+            $option->opcja_wyposazenia_decoded = str_replace(array("\r\n", "\n", "\r", '"'), ' ', $option->opcja_wyposazenia_decoded);
+            $option->opcja_wyposazenia_decoded = filter_var($option->opcja_wyposazenia_decoded, FILTER_SANITIZE_STRING);
+        }
 
         $allOptions = json_encode($allOptions);
 
